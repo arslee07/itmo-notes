@@ -1,8 +1,5 @@
-#import "@preview/cetz:0.4.2"
-#import "@preview/cetz-plot:0.1.3": plot, chart
 #import "@preview/theorion:0.4.1": *
 #import cosmos.clouds: *
-
 #show: show-theorion
 
 #let Eps = text(size: 20pt, $epsilon$)
