@@ -19,7 +19,7 @@ jobs:
         uses: https://code.forgejo.org/actions/forgejo-release@v2
         with:
           url: "https://codeberg.org"
-          repo: "arslee07/notes"
+          repo: "arslee07/itmo-notes"
           tag: latest
           token: ${{ secrets.RELEASE_TOKEN }}
           direction: upload
