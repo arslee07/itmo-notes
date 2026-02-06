@@ -14,7 +14,14 @@ jobs:
         with:
           token: ${{ secrets.GH_API_TOKEN }}
       - name: Build
-        run: ./build.sh
+        run: |
+          mkdir -p build
+          for in in $(find -name "*.typ")
+          do
+            out="build/"$(echo $in | sed -e "s/\.\///" -e "s/\//-/" -e "s/\.typ/\.pdf/")
+            echo Compiling $in to $out...
+            typst compile $in $out
+          done
       - name: Publish
         uses: https://code.forgejo.org/actions/forgejo-release@v2
         with:
