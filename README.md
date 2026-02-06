@@ -4,26 +4,26 @@
 
 В данном репозитории собраны различные материалы, которые пишутся по ходу освоения образовательной программы "Информационные системы и технологии" университета ИТМО, первый поток.
 
-Исходный код доступен на [Codeberg](https://codeberg.org/arslee07/itmo-notes) (с зеркалом на [Github](https://github.com/arslee07/itmo-notes)). Актуальные PDF собираются автоматически и хранятся [в релизе](https://codeberg.org/arslee07/itmo-notes/releases/tag/latest).
+Исходный код доступен на [Codeberg](https://codeberg.org/arslee07/itmo-notes) (с зеркалом на [GitHub](https://github.com/arslee07/itmo-notes)). Актуальные PDF собираются автоматически и хранятся [в релизе](https://codeberg.org/arslee07/itmo-notes/releases/tag/latest).
 
 ## 1 курс
 
 ### Дискретная математика
 
-_Лектор --- Чухарев К.И._
+*Лектор --- Чухарев К.И.*
 
 - [Теормин 1](https://itmo.arslee.me/dm-tm1.pdf)
 - [Теормин 2](https://itmo.arslee.me/dm-tm2.pdf)
 
 ### Линейная алгебра
 
-_Лектор --- Бакеева Л.В._
+*Лектор --- Бакеева Л.В.*
 
 - [Билеты](https://itmo.arslee.me/linal-tickets.pdf)
 
 ### Специальные разделы высшей математики
 
-_Лектор --- Бакеева Л.В._
+*Лектор --- Бакеева Л.В.*
 
 - [Лекции](https://itmo.arslee.me/srvm-lectures.pdf)
 
