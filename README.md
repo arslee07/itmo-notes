@@ -4,7 +4,7 @@
 
 В данном репозитории собраны различные материалы, которые пишутся по ходу освоения образовательной программы "Информационные системы и технологии" университета ИТМО, первый поток.
 
-Исходный код доступен на [Codeberg](https://codeberg.org/arslee07/itmo-notes). Актуальные PDF собираются автоматически и хранятся [в релизе](https://codeberg.org/arslee07/itmo-notes/releases/tag/latest).
+Исходный код доступен на [Codeberg](https://codeberg.org/arslee07/itmo-notes) (с зеркалом на [Github](https://github.com/arslee07/itmo-notes)). Актуальные PDF собираются автоматически и хранятся [в релизе](https://codeberg.org/arslee07/itmo-notes/releases/tag/latest).
 
 ## 1 курс
 
@@ -27,6 +27,10 @@ _Лектор --- Бакеева Л.В._
 
 - [Лекции](https://itmo.arslee.me/srvm-lectures.pdf)
 
-## Лицензия
+## Контрибьют
 
-[GNU General Public License v3.0](https://codeberg.org/arslee07/itmo-notes/src/branch/master/LICENSE)
+Нашли ошибку? Смело отправляйте Issue или стучитесь в [личку](https://t.me/arslee07)!
+
+Что-то недописано? Хотите помочь? Не стесняйтесь отправить Pull Request!
+
+Если желаете скооперироваться, пишите в ЛС. *Все-таки, в одиночку писать тяжеловато...*
