@@ -1,6 +1,6 @@
 # itmo-notes
 
-![](https://codeberg.org/arslee07/itmo-notes/badges/workflows/ci.yml/badge.svg)
+![](https://codeberg.org/arslee07/itmo-notes/badges/workflows/build-docs.yml/badge.svg) ![](https://codeberg.org/arslee07/itmo-notes/badges/workflows/publish-website.yml/badge.svg)
 
 В данном репозитории собраны различные материалы, которые пишутся по ходу освоения образовательной программы "Информационные системы и технологии" университета ИТМО, первый поток.
 
