@@ -1,0 +1,92 @@
+name: Build and publish
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: codeberg-tiny
+    steps:
+      - name: Checkout
+        uses: https://code.forgejo.org/actions/checkout@v4
+
+      - name: Setup Typst
+        uses: https://github.com/typst-community/setup-typst@v4
+        with:
+          token: ${{ secrets.GH_API_TOKEN }}
+
+      - name: Build docs
+        run: |
+          mkdir -p build
+          for in in $(find -name "*.typ")
+          do
+            out="build/"$(echo $in | sed -e "s/\.\///" -e "s/\//-/" -e "s/\.typ/\.pdf/")
+            echo Compiling $in to $out...
+            typst compile $in $out
+          done
+
+      - name: Release docs
+        uses: https://code.forgejo.org/actions/forgejo-release@v2
+        with:
+          url: "https://codeberg.org"
+          repo: "arslee07/itmo-notes"
+          tag: latest
+          token: ${{ secrets.RELEASE_TOKEN }}
+          direction: upload
+          release-dir: build
+          hide-archive-link: true
+          override: true
+
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install pandoc
+
+      - name: Build website
+        run: |
+          HEADER=$(cat <<EOF
+          <!DOCTYPE html>
+          <html lang="en">
+
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="color-scheme" content="light dark">
+            <title>itmo-notes</title>
+            <link rel="stylesheet" href="https://arslee.me/custom.css">
+          </head>
+
+          <body>
+          EOF
+          )
+
+          FOOTER=$(cat <<EOF
+          </body>
+          </html>
+          EOF
+          )
+
+          echo $HEADER > build/index.html
+          pandoc README.md >> build/index.html
+          echo $FOOTER >> build/index.html
+
+          echo itmo.arslee.me > build/.domains
+
+      - name: Publish website
+        run: |
+          if [ "$(git branch --list pages)" ]; then
+            git branch -D pages
+          fi
+          git switch --orphan pages
+
+          mv build/* build/.* .
+          rmdir build
+
+          git config user.email codeberg-ci
+          git config user.name "Codeberg CI"
+
+          git add .
+          git commit -m "Publish via CI"
+          git push origin pages --force

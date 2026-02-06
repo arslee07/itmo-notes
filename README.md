@@ -1,6 +1,6 @@
 # itmo-notes
 
-![](https://codeberg.org/arslee07/itmo-notes/badges/workflows/build-docs.yml/badge.svg) ![](https://codeberg.org/arslee07/itmo-notes/badges/workflows/publish-website.yml/badge.svg)
+![](https://codeberg.org/arslee07/itmo-notes/badges/workflows/build-and-publish.yml/badge.svg)
 
 В данном репозитории собраны различные материалы, которые пишутся по ходу освоения образовательной программы "Информационные системы и технологии" университета ИТМО, первый поток.
 
@@ -12,20 +12,20 @@
 
 _Лектор --- Чухарев К.И._
 
-- [Теормин 1](https://codeberg.org/arslee07/itmo-notes/releases/download/latest/dm-tm1.pdf)
-- [Теормин 2](https://codeberg.org/arslee07/itmo-notes/releases/download/latest/dm-tm2.pdf)
+- [Теормин 1](https://itmo.arslee.me/dm-tm1.pdf)
+- [Теормин 2](https://itmo.arslee.me/dm-tm2.pdf)
 
 ### Линейная алгебра
 
 _Лектор --- Бакеева Л.В._
 
-- [Билеты](https://codeberg.org/arslee07/itmo-notes/releases/download/latest/linal-tickets.pdf)
+- [Билеты](https://itmo.arslee.me/linal-tickets.pdf)
 
 ### Специальные разделы высшей математики
 
 _Лектор --- Бакеева Л.В._
 
-- [Лекции](https://codeberg.org/arslee07/itmo-notes/releases/download/latest/srvm-lectures.pdf)
+- [Лекции](https://itmo.arslee.me/srvm-lectures.pdf)
 
 ## Лицензия
 
