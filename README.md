@@ -6,8 +6,6 @@
 
 Исходный код доступен на [Codeberg](https://codeberg.org/arslee07/itmo-notes). Актуальные PDF собираются автоматически и хранятся [в релизе](https://codeberg.org/arslee07/itmo-notes/releases/tag/latest).
 
----
-
 ## 1 курс
 
 ### Дискретная математика
@@ -28,8 +26,6 @@ _Лектор --- Бакеева Л.В._
 _Лектор --- Бакеева Л.В._
 
 - [Лекции](https://codeberg.org/arslee07/itmo-notes/releases/download/latest/srvm-lectures.pdf)
-
----
 
 ## Лицензия
 
