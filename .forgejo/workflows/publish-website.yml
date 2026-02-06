@@ -57,4 +57,4 @@ jobs:
 
           git add index.html .domains
           git commit -m "Publish via CI"
-          git push origin pages
+          git push origin pages --force
