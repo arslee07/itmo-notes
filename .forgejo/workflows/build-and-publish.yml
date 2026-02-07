@@ -27,18 +27,6 @@ jobs:
             typst compile $in $out
           done
 
-      - name: Release docs
-        uses: https://code.forgejo.org/actions/forgejo-release@v2
-        with:
-          url: "https://codeberg.org"
-          repo: "arslee07/itmo-notes"
-          tag: latest
-          token: ${{ secrets.RELEASE_TOKEN }}
-          direction: upload
-          release-dir: build
-          hide-archive-link: true
-          override: true
-
       - name: Install Pandoc
         run: |
           sudo apt-get update

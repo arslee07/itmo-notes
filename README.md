@@ -4,7 +4,7 @@
 
 В данном репозитории собраны различные материалы, которые пишутся по ходу освоения образовательной программы "Информационные системы и технологии" университета ИТМО, первый поток.
 
-Исходный код доступен на [Codeberg](https://codeberg.org/arslee07/itmo-notes) (с зеркалом на [GitHub](https://github.com/arslee07/itmo-notes)). Актуальные PDF собираются автоматически и хранятся [в релизе](https://codeberg.org/arslee07/itmo-notes/releases/tag/latest).
+Исходный код доступен на [Codeberg](https://codeberg.org/arslee07/itmo-notes) (с зеркалом на [GitHub](https://github.com/arslee07/itmo-notes)).
 
 ## 1 курс
 
