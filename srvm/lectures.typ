@@ -7,6 +7,10 @@
 #set page(margin: 1cm, numbering: "1")
 #set text(lang: "ru", size: 12pt)
 
+#show math.equation.where(block: true): eq => {
+  block(width: 100%, inset: 0pt, align(center, eq))
+}
+
 #let Eps = text(size: 18pt, $epsilon$)
 #let vector(x) = $accent(#x, ->)$
 
@@ -207,7 +211,10 @@
 #proof[
   1. По определению.
 
-  2. $norm(lambda x) = sqrt((lambda x, lambda x)) = sqrt(sum_(i = 1)^n lambda^2 x_i^2) = sqrt(lambda^2 sum_(i = 1)^n x_i^2) = abs(lambda) sqrt(sum_(i = 1)^n x_i^2) = abs(lambda) sqrt((x, x)) = abs(lambda) dot norm(x)$
+  2.
+    $
+      norm(lambda x) = sqrt((lambda x, lambda x)) = sqrt(sum_(i = 1)^n lambda^2 x_i^2) = sqrt(lambda^2 sum_(i = 1)^n x_i^2) = abs(lambda) sqrt(sum_(i = 1)^n x_i^2) = abs(lambda) sqrt((x, x)) = abs(lambda) dot norm(x)
+    $
 
   3.
     #[
@@ -356,4 +363,3 @@ $
 
   Аналогичным образом переберем все векторы и получим, что все $c_i$ равны нулю. Противоречие.
 ]
-
