@@ -1,6 +1,7 @@
 #import "@preview/theorion:0.4.1": *
 #import cosmos.clouds: *
 #show: show-theorion
+#set-inherited-levels(0)
 
 #set document(title: [Специальные разделы высшей математики. Лекции])
 #set page(margin: 1cm, numbering: "1")
@@ -13,9 +14,7 @@
 #outline()
 #pagebreak()
 
-= Лекция 1
-
-_04.02.2026_
+= Лекция 1 (04.02.2026)
 
 == Евклидовы пространства
 
@@ -94,7 +93,7 @@ _04.02.2026_
   2. Билинейность:
 
   $
-    (lambda x, y) = (x, lambda y) = lambda (x, y)
+    (lambda x, y) = (x, lambda y) = lambda (x, y), quad (x + z, y) = (x, y) + (z, y), quad (x, y + z) = (x, y) + (x, z)
   $
 
   3. Положительная определенность:
@@ -208,11 +207,23 @@ _04.02.2026_
 #proof[
   1. По определению.
 
-  2. $(lambda x, lambda x) = sum_(i = 1)^n lambda^2 (x_i, x_i) = lambda^2 sum_(i = 1)^n x_i^2$ \
+  2. $norm(lambda x) = sqrt((lambda x, lambda x)) = sqrt(sum_(i = 1)^n lambda^2 x_i^2) = sqrt(lambda^2 sum_(i = 1)^n x_i^2) = abs(lambda) sqrt(sum_(i = 1)^n x_i^2) = abs(lambda) sqrt((x, x)) = abs(lambda) dot norm(x)$
 
-    $norm(lambda x) = sqrt(lambda^2 sum_(i = 1)^n) x_i^2 = abs(lambda) sqrt(sum_(i = 1)^n x_i^2) = abs(lambda) norm(x)$
+  3.
+    #[
+      #let gb(it) = text(fill: green.darken(25%), it)
+      #let rb(it) = text(fill: red.darken(25%), it)
 
-  3. *TODO* дописать
+      $
+        norm(x + y)^2 &= (x + y, x + y) \
+          &= (x, x) + 2(x + y) + (y, y) \
+          &= norm(x)^2 + 2 rb((x, y)) + norm(y)^2 wide ("по Коши-Буянковского:" rb((x, y)) <= abs((x, y)) <= gb(norm(x) norm(y))) \
+          &<= norm(x)^2 + 2 gb(norm(x) norm(y)) + norm(y)^2 \
+          &= (norm(x) + norm(y))^2
+      $
+
+      Следовательно, $norm((x, y)) <= norm(x) + norm(y)$.
+    ]
 ]
 
 == Евклидовы пространства
@@ -279,11 +290,35 @@ $
 
 Отсюда:
 
-*TODO* дописать
+$
+  abs((x, y))/(norm(x) dot norm(y)) <= 1 wide abs(cos phi) <= 1 wide 0 <= cos phi <= 1, space phi in [0; pi]
+$
+
+#definition(title: "Ортогональные векторы")[
+  Векторы $x$, $y$ --- _ортогональны_, если $phi = pi / 2$, то есть
+
+  $
+    (x, y) = 0
+  $
+]
 
 == Ортогональные системы векторов
 
-*TODO* дописать
+#definition(title: "Ортогональная система векторов")[
+  Система $(a_1, a_2, ..., a_n) in Eps$ называется _ортогональной_, если все векторы попарно ортогональны:
+
+  $
+    (a_i, a_j) = 0, quad i != j
+  $
+]
+
+#definition(title: "Ортонормированная система векторов")[
+  Система векторов $(a_1, a_2, ..., a_n) in Eps$ называется _ортонормированной_, если она ортогональная и норма каждого вектора равна 1:
+
+  $
+    forall i in overline(1"," n). quad norm(a_i) = 1
+  $
+]
 
 #theorem(title: "О линейной независимости ортогональной системы")[
   Ортогональная система ненулевых векторов линейно независима.
@@ -298,6 +333,27 @@ $
 
   есть хотя бы один ненулевой коэффициент $c_i$.
 
-  *TODO* дописать
+  Возьмем скалярное произведение двух частей равенства на вектор $vector(a_1)$:
+
+  $
+    (vector(a_1), space c_1 vector(a_1) + c_2 vector(a_2) + ... + c_n vector(a_n)) = (vector(a_1), vector(0)).
+  $
+
+  Преобразуем выражение:
+
+  $
+    (vector(a_1), space c_1 vector(a_1) + c_2 vector(a_2) + ... + c_n vector(a_n)) = 0, \
+    (vector(a_1), c_1 vector(a_1)) + (vector(a_1), c_2 vector(a_2)) + ... + (vector(a_1), c_n vector(a_n)) = 0.
+  $
+
+  Рассмотрим первое слагаемое. Поскольку система ортогональная, то
+
+  $
+    (vector(a_1), c_1 vector(a_1)) = c_1 (vector(a_1), vector(a_1)) = 0.
+  $
+
+  Произведение $(vector(a_1), vector(a_1))$ не может быть равно нулю, так как по свойству скалярного произведения следовало бы $vector(a_1) = vector(0)$, что противоречит формулировке теоремы. Значит, $c_1 = 0$.
+
+  Аналогичным образом переберем все векторы и получим, что все $c_i$ равны нулю. Противоречие.
 ]
 
