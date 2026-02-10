@@ -21,6 +21,10 @@
 
 - [Билеты](https://itmo.arslee.me/linal-tickets.pdf)
 
+### Математический анализ
+
+- [Лекции](https://itmo.arslee.me/matan-lectures.pdf)
+
 ### Основы программирования
 
 *Лектор --- Хвастунов А.П.*
