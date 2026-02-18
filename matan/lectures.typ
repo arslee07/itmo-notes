@@ -11,6 +11,8 @@
   block(width: 100%, inset: 0pt, align(center, eq))
 }
 
+#let replacement(..items) = $mat(delim: "[", align: #left, ..items)$
+
 #title()
 #outline()
 #pagebreak()
@@ -169,11 +171,11 @@
 + Замена переменной или подстановка
   + Подстановка:
     $
-      integral f(x) d x = cases(delim: "[", x = phi(t), d x = u'(t) d t) = integral (f(phi(t))) dot phi'(t) d t = Phi(t) + C = [t = phi^-1(x)] = F(x) + C
+      integral f(x) d x = replacement(x = phi(t); d x = u'(t) d t) = integral (f(phi(t))) dot phi'(t) d t = Phi(t) + C = replacement(t = phi^-1(x)) = F(x) + C
     $
   + Замена переменной (подстановка $phi(x) = t$ подбирается):
     $
-      integral f(phi(x)) phi'(x) d x = cases(delim: "[", phi(x) = t, d t = phi'(x) d x) = integral f(t)d t
+      integral f(phi(x)) phi'(x) d x = replacement(phi(x) = t; d t = phi'(x) d x) = integral f(t)d t
     $
 + Интегрирование по частям
 
@@ -211,7 +213,7 @@
   Пример:
 
   $
-    integral x sqrt(x - 3) d x &= cases(delim: "[", t = sqrt(x - 3), t^2 + 3 = x, d x = 2 t d t) = integral (t^2 + 3) t dot 2 t dot d t \
+    integral x sqrt(x - 3) d x &= mat(delim: "[", t = sqrt(x - 3); t^2 + 3 = x; d x = 2 t d t) = integral (t^2 + 3) t dot 2 t dot d t \
     &= 2 integral (t^4 + 3 t^2) d t \
     &= 2/5 t^5 + 2 t^3 + C \
     &= 2/5 (sqrt(x - 3))^5 + 2 (sqrt(x - 3))^3 + C
@@ -220,3 +222,7 @@
   $
     integral sqrt(2 - x^2) d x = ...
   $
+
+= Лекция 3 (17.02.2026)
+
+сори заболел
