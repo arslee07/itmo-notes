@@ -92,7 +92,7 @@
 
 #proof[
   $
-    integral f(u(x)) phi'(x) d x = cases(delim: "[", u = phi(x), d u = u'(x) d x) = integral f(u) d u = F(u) + C
+    integral f(u(x)) phi'(x) d x = replacement(u = phi(x); d u = u'(x) d x) = integral f(u) d u = F(u) + C
   $
 ]
 
