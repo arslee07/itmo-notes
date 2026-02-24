@@ -4,7 +4,7 @@
 #set-inherited-levels(0)
 
 #set document(title: [Математический анализ --- 2. Лекции])
-#set page(margin: 1cm, numbering: "1")
+#set page(numbering: "1")
 #set text(lang: "ru", size: 12pt)
 
 #show math.equation.where(block: true): eq => {
@@ -102,20 +102,11 @@
   $
 ]
 
-#property(title: "Линейность определенного(???) интеграла")[
+#property(title: "Линейность неопределенного интеграла")[
   $
-    integral a_1 f_1(x) + a_2 f_2(x) + ... + a_n f_n(x) = a_1 integral f_1(x) d x + a_2 integral f_2(x) d x + ... + a_n integral f_n(x) d x
+    &integral a_1 f_1(x) + a_2 f_2(x) + ... + a_n f_n(x) \
+    &wide = a_1 integral f_1(x) d x + a_2 integral f_2(x) d x + ... + a_n integral f_n(x) d x
   $
-]
-
-#proof[
-  Пусть $F_1(x), F_2(x), ..., F_n(x)$ --- первообразные для соответствующих функций. Тогда
-
-  $
-    Phi(x) = a_1 F_1(x) + a_2 F_2(x) + ... + a_n F_n(x)
-  $
-
-  *TODO*
 ]
 
 #theorem(title: "Таблица интегралов")[
@@ -145,33 +136,20 @@
   + $integral (d x)/sqrt(x^2 + a^2) = ln abs(x + sqrt(x^2 plus.minus a^2)) + C$
   + $integral sqrt(a^2 - x^2) d x = a^2/2 arcsin x/a + x/2 sqrt(a^2 - x^2) + C$
   + $integral sqrt(a^2 + x^2) d x = a^2/2 ln abs(x + sqrt(x^2 + a^2)) + x/2 sqrt(x^2 + a^2) + C$
-  + $integral (d x)/(x^2 + a^2)^n$ --- *TODO* домашка, по частям
-]
-
-#note-box[
-  Вывод формулы 24:
-
-  $
-    "TODO"
-  $
-
-  Вывод формулы 25:
-
-  $
-    "TODO"
-  $
-
+  + $integral (d x)/(x^2 + a^2)^n$ --- домашка, по частям
 ]
 
 Методы интегрирования:
 + Непосредственное интегрирование: преобразование подинтегральной функции (выражения) для сведения интеграла с использованием свойств к одному или нескольким табличным интегралам. Пример:
   $
-    integral (d x) / (x^2 + x^4) = integral ((1 + x^2) - x^2)/(x^2 (1 + x^2)) d x = integral (1/x^2 - 1/(1 + x^2)) d x = integral (d x)/x^2 - integral (d x)/(1 + x^2) = - 1 / x + "arctg" x + C
+    integral (d x) / (x^2 + x^4) &= integral ((1 + x^2) - x^2)/(x^2 (1 + x^2)) d x = integral (1/x^2 - 1/(1 + x^2)) d x \
+    &= integral (d x)/x^2 - integral (d x)/(1 + x^2) = - 1 / x + "arctg" x + C
   $
 + Замена переменной или подстановка
   + Подстановка:
     $
-      integral f(x) d x = replacement(x = phi(t); d x = u'(t) d t) = integral (f(phi(t))) dot phi'(t) d t = Phi(t) + C = replacement(t = phi^-1(x)) = F(x) + C
+      integral f(x) d x &= replacement(x = phi(t); d x = u'(t) d t) = integral (f(phi(t))) dot phi'(t) d t \
+      &= Phi(t) + C = replacement(t = phi^-1(x)) = F(x) + C
     $
   + Замена переменной (подстановка $phi(x) = t$ подбирается):
     $
@@ -226,3 +204,160 @@
 = Лекция 3 (17.02.2026)
 
 сори заболел
+
+= Лекция 4 (24.02.2026)
+
+== Тригонометрические подстановки
+
+1. $ integral R(x, sqrt(a^2 - x^2)) d x = replacement(x = a sin t space (x = a cos t)"," d x = a cos d t; t = arcsin x/a) = integral R(sin t, cos t) d t $
+2. $ integral R(x, sqrt(a^2 + x^2)) d x = replacement(x = a tg t space (a = ctg t)"," d x = (a d t)/(cos^2 t); t = "arctg" x/a) = integral R(sin t, cos t) d t $
+3. $ integral R(x, sqrt(x^2 - a^2)) d x = replacement(x = a/(cos t) = a sec t space (x = "cosec" t = a / (sin t)); d x = - (a sin t) / (cos^2 t) d t) = integral R(sin t, cos t) d t $
+
+== Интегрирование тригонометрических выражений
+
+=== Тип I
+
+1. $ integral sin m x dot cos n x space d x = replacement(sin alpha cos beta = 1/2(sin(alpha - beta) + sin(alpha + beta))) $
+2. $ integral sin m x dot sin n x space d x = replacement(sin alpha sin beta = 1/2 (cos(alpha - beta) - cos(alpha + beta))) $
+3. $ integral cos m x dot cos n x space d x = replacement(cos alpha cos beta = 1 / 2 (cos(alpha - beta) + cos(alpha + beta))) $
+
+=== Тип II
+
+$
+  integral tg^n x space d x = integral tg^(n - 2) x tg^2 x space d x wide tg^2 x = 1 / (cos^2 x) - 1
+$
+
+$
+  integral ctg^n x space d x = integral ctg^(n - 2) x ctg^2 x space d x wide ctg^2 x = 1 / (sin^2 x) - 1
+$
+
+Примеры:
+
+$
+  integral tg^3 d x = integral tg x dot (1/(cos^2 x) - 1) d x = integral (tg x d x)/(cos^2 x) - integral tg x d x = (tg^2 x) / 2 + ln abs(cos x) + C
+$
+
+$
+  integral ctg^7 x d x = integral ctg^5 x (1 / (sin^2 x) - 1) d x = integral (ctg^5 d x)/(sin^2 x) - integral ctg^5 x d x = ...
+$
+
+=== Тип III
+
+$
+  integral sin^m x dot cos^n x space d x
+$
+
+1. $m$ или $n$ --- положительное нечетное
+
+  $
+    cos^n x = cos^(n+1) x = cos^(2 k + 1) x = cos^(2 k) dot cos x = (cos^2 x)^k dot cos x = (1 - sin^2 x)^k cos x
+  $
+
+  $
+    integral ((1 - sin^2 x)^k cos x)/(sin^m x) d x = integral ((1 - sin^2 x)^k d (sin x))/(sin^m x)
+  $
+
+  Пример:
+
+  $
+    integral (cos^2 x)/(sin^5 x) d x = integral (cos^2 x sin x)/(sin^6 x) d x
+  $
+
+2. $m$ и $n$ --- отрицательное четное
+
+  $
+    sin^2 x = 1/2 (1 - cos 2 x) \
+    cos^2 x = 1/2 (1 + cos 2 x) \
+    2 sin x cos x = sin 2 x
+  $
+
+  Пример:
+
+  $
+    integral sin^4 x cos^2 x space d x &= integral 1/8 (1 - cos 2 x)^2 (1 + cos 2 x) space d x \
+    &= 1/8 integral (1 - cos^2 2 x - cos 2 x + cos^3 2 x) space d x \
+    &= 1/8 integral d x - 1/8 integral cos 2 x d x - 1/8 integral 1/ 2 (1 + cos 4 x) space d x + 1/8 integral cos^2 2 x cos 2 x space d x \
+    &= x/8 - 1/16 - x/16 - 1/64 sin 4 x + 1 /8 dot 1/2 integral (1 - sin^2 2 x) space d(sin 2 x) \
+    &= ...
+  $
+
+3. $m$ и $n$ --- четные, хотя бы одно из них отрицательное ($m + n = 2 k $, то есть отрицательное четное)
+
+  $
+    sin x = t / sqrt(1 + t^2) wide cos x = 1 / sqrt(1 + t^2) wide replacement(t = tg x ; x = "arctg" x ; d x = (d t)/(1 + t^2))
+  $
+
+  $
+    sin x = (sin x)/sqrt(sin^2 x + cos^2 x) = (tg x)/sqrt(tg^2 x + 1) = t/sqrt(t^2 + 1) \
+    cos x = (cos x)/sqrt(sin^2 x + cos^2 x) = 1/sqrt(tg^2 x + 1) = 1/sqrt(t^2 + 1)
+  $
+
+  Пример:
+
+  $
+    (sin^4 x)/(cos^8 x) d x &= integral tg^4 x (d x)/(cos^4 x) = replacement(t = tg x; x = "arctg" t; d x = (d t)/(1+t^2); cos x = 1/sqrt(1 + t^2)) \
+    &= integral t^4 space ((d t)/(1 + t^2))/((1/sqrt(1+t^2))^4) \
+    &= t^5 / 5 + t^7 / 7 + C \
+    &= (tg^5 x)/5 + (tg^7 x)/7 + C
+  $
+
+=== Тип IV
+
+Рациональная функция относительно $sin x$ и $cos x$:
+
+$
+  integral R(sin x, cos x) space d x
+$
+
+Универсальная тригонометрическая подстановка:
+
+$
+  replacement(t = tg x / 2; x = 2 "arctg" t; 1/2 d x = (d t)/(1 + t^2), d x = (2 d t)/(1 + t^2))
+$
+
+$
+  sin x = (2 sin x/2 cos x/2)/(cos^2 x/2 + sin^2 x/2) = (2 tg x/2)/(1 + tg (2 x)/2) = (2 t)/(1 + t^2) \
+  cos x = (cos^2 x/2 - sin^2 x/2)/(cos^2 x/2 + sin^2 x/2) = (1 - tg^2 x/2)/(t + tg^2 x/2) = (1-t^2)/(1+t^2)
+$
+
+Пример:
+
+$
+  integral (sin x + 3 cos x)/(1 + 4 sin x - 5 cos x) d x &= replacement(tg = tg x/2; d x = (2 d t)/(1 + t^2); sin x = t/(1 + t^2); cos x = (1 - t^2)/(1 + t^2)) \
+  &= integral (t / (1 + t^2) + (3(1 - t^2))/(1 + t^2))/(1 + (4 t)/(1 + t^2) - (5(1 - t^2))/(1 + t^2)) dot (2 d t)/(1 + t^2) \
+  &= integral (t + 3 (1 - t^2))/(1 + t^2 + 4 t - 5(1 - t^2)) dot (2 d t)/(1 + t^2) = ...
+$
+
+1. $R(sin x, cos x)$ --- нечетная относительно $sin x$, то есть $R(-sin x, cos x) = -R(sin x, cos x)$:
+
+  $
+    t = cos x
+  $
+
+2. $R(sin x, cos x)$ --- нечетная относительно $cos x$, то есть $R(sin x, -cos x) = -R(sin x, cos x)$:
+
+  $
+    t = sin x
+  $
+
+3. $R(sin x, cos x)$ --- четная относительно $sin x$ и $cos x$, то есть $R(-sin x, -cos x) = R(sin x, cos x)$:
+
+  $
+    t = tg x
+  $
+
+Примеры:
+
+$
+  integral (d x)/(sin^2 x + 2 sin x cos x - cos^2 x) &= replacement(R(-sin x, -cos x) = -R(sin x, cos x); t = tg x; x = "arctg" x; d x = (d t)/(1 + t^2); sin x = t/sqrt(1 + t^2); cos x = 1/sqrt(1 + t^2)) \
+  &= integral ((d t)/(1 + t^2))/((t^2)/(1+t^2) + (2 t)/(1 + t^2) - 1/(1 + t^2)) = integral (d t)/(t^2 + 2 t - 1) \
+  &= integral (d t)/((t + 1)^2 - 2) = 1/(2 sqrt(2)) ln abs((t + 1 - sqrt(2))/(t + 1 + sqrt(2))) + C
+$
+
+$
+  integral (d x)/(cos x) = replacement(t = tg x/2; d x = (2 d t)/(1 + t^2); sin x = (2 t)/(1 +  t^2)) = integral ((2 d t)/(1 + t^2))/((2 t)/(1 + t^2)) = integral (d t)/t = ln abs(t) + C = ln abs(tg (x/2 + pi/4)) + C
+$
+
+$
+  integral (d x)/(sin x) = replacement(cos x = sin(x + pi/2); d x = d(x + pi/2)) = integral (d(x + pi/2))/sin(x + pi/2) = ln abs(tg (x + pi/2)/2) + C = ln abs(tg x/2) + C
+$
