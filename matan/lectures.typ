@@ -113,9 +113,9 @@
   + $integral x^n d x = x^(n + 1)/(n + 1) + C$
 
   + $integral a^x d x = a^x/(ln a) + C$
-  + $integral e^x d x = e^x/ + C$
-  + $integral sin x d x = -cos x + C$
-  + $integral cos x d x = sin x + C$
+  + $integral e^x d x = e^x + C$
+  + $integral sin x space d x = -cos x + C$
+  + $integral cos x space d x = sin x + C$
   + $integral (d x) / (cos^2 x) = tg x + C$
   + $integral (d x) / (sin^2 x) = -ctg x + C$
   + $integral (d x) / sqrt(1 - x^2) = arcsin x + C$
@@ -132,10 +132,10 @@
   + $integral ctg x d x = ln abs(sin x) + C$
   + $integral (x d x)/(x^2 plus.minus a^2) = 1/2 ln abs(x^2 + a^2) + C$
   + $integral (x d x)/sqrt(a^2 plus.minus x^2) = plus.minus sqrt(a^2 plus.minus x^2) + C$
-  + $integral (d x)/(x^2 - a^2) = 1/2 ln abs((x-a)/(x+a)) + C quad$ ("высокий" логарифм)
-  + $integral (d x)/sqrt(x^2 + a^2) = ln abs(x + sqrt(x^2 plus.minus a^2)) + C$
-  + $integral sqrt(a^2 - x^2) d x = a^2/2 arcsin x/a + x/2 sqrt(a^2 - x^2) + C$
-  + $integral sqrt(a^2 + x^2) d x = a^2/2 ln abs(x + sqrt(x^2 + a^2)) + x/2 sqrt(x^2 + a^2) + C$
+  + $integral (d x)/(x^2 - a^2) = 1/(2a) ln abs((x-a)/(x+a)) + C quad$ ("высокий" логарифм)
+  + $integral (d x)/sqrt(x^2 + a^2) = ln abs(x + sqrt(x^2 plus.minus a^2)) + C quad$ ("длинный" логарифм)
+  + $integral sqrt(a^2 - x^2) space d x = a^2/2 arcsin x/a + x/2 sqrt(a^2 - x^2) + C$
+  + $integral sqrt(a^2 + x^2) space d x = a^2/2 ln abs(x + sqrt(x^2 + a^2)) + x/2 sqrt(x^2 + a^2) + C$
   + $integral (d x)/(x^2 + a^2)^n$ --- домашка, по частям
 ]
 
