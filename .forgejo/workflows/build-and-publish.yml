@@ -29,7 +29,7 @@ jobs:
 
             out="build/"$(echo $in | sed -e "s/\.\///" -e "s/\//-/" -e "s/\.typ/\.pdf/")
             echo Compiling $in to $out...
-            typst compile $in $out
+            typst compile $in $out --root=.
           done
 
       - name: Install Pandoc
