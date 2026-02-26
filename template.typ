@@ -60,18 +60,7 @@
       width: 100%,
       radius: 4pt,
       inset: 1em,
-      grid(
-        columns: (auto, auto),
-        column-gutter: 1em,
-        row-gutter: par.leading,
-        align: (right, raw.align),
-        ..for line in it.lines {
-          (
-            text(fill: gray)[#line.number],
-            line.body,
-          )
-        },
-      )
+      it,
     )
   }
 
