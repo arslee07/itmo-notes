@@ -22,6 +22,11 @@ jobs:
           mkdir -p build
           for in in $(find -name "*.typ")
           do
+            if [ $in = "template.typ" ]
+            then
+              continue
+            fi
+
             out="build/"$(echo $in | sed -e "s/\.\///" -e "s/\//-/" -e "s/\.typ/\.pdf/")
             echo Compiling $in to $out...
             typst compile $in $out

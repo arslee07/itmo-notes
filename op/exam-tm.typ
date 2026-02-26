@@ -1,42 +1,5 @@
-#set document(title: "Основы программирования. Теормин")
-#set page(margin: 1cm)
-#set text(lang: "ru")
-#show link: set text(fill: blue)
-
-#show raw.where(block: true): (it) => box(
-  stroke: 0.5pt + gray,
-  inset: 8pt,
-  radius: 4pt,
-  it
-)
-
-#let focus-box(body) = box(
-  fill: green.transparentize(90%),
-  inset: 8pt,
-  radius: 4pt,
-  width: 100%,
-  body
-)
-
-#let example-box(body) = box(
-  fill: blue.transparentize(95%),
-  inset: 8pt,
-  radius: 4pt,
-  width: 100%,
-  body
-)
-
-#title()
-
-#outline()
-#align(right)[
-  #v(1fr)
-  #image("assets/title.png", width: 25%)
-  #link("https://arslee.me")[#text(fill: blue)[https://arslee.me]]
-]
-
-#set page(numbering: "1")
-#counter(page).update(1)
+#import "../template.typ": *
+#show: template.with([Основы программирования. Теормин])
 
 = Встроенные типы данных, представление чисел в памяти, строки
 
@@ -60,11 +23,9 @@ _Начну сию книжку с запугивания._ Вот так кла
 
 С помощью оператора `sizeof` можно получить размер типа в байтах. Стандарт C++ гарантирует для целочисленных данных следующую цепочку:
 
-#align(center)[
-  ```cpp
-  1 == sizeof(char) <= sizeof(short) <= sizeof(int) <= sizeof(long) <= sizeof(long long)
-  ```
-]
+```cpp
+1 == sizeof(char) <= sizeof(short) <= sizeof(int) <= sizeof(long) <= sizeof(long long)
+```
 
 Для нас это значит, что:
 - `char` всегда 1 байт
@@ -81,15 +42,12 @@ $
   underbrace(1, "Знак") space underbrace(10000001, "Экспонента") space underbrace(01000000000000000000000_2, "Мантисса")
 $
 
-#example-box[
-  Например, для числа $-1.2345$:
-  - Знак равен 1 ("минус")
-  - Мантисса равна 12345
-  - Экспонента равна $10^(-4)$
+Например, для числа $-1.2345$:
+- Знак равен 1 ("минус")
+- Мантисса равна 12345
+- Экспонента равна $10^(-4)$
 
-  То есть, число хранится в форме, знакомой еще со школьной физики: $-12345 dot 10^(-4)$
-]
-
+То есть, число хранится в форме, знакомой еще со школьной физики: $-12345 dot 10^(-4)$
 
 Помимо обычных вещественных чисел, стандартом IEEE 754 определены:
 - $+0$ и $-0$
@@ -122,26 +80,25 @@ _Так называемые касты._
 4. Операнды типа `char` или `short` приводятся к `int`
 5. Наконец, если какой-то операнд --- `long`, то второй приводится к `long`
 
-#focus-box[
+#note-box[
   Если обобщить, то:
   1. Сначала кастуем к наибольшим вещественным типам
   2. Затем кастуем к наибольшим целочисленным типам
 ]
 
-#example-box[
-  Пример:
+Пример:
 
-  ```cpp
-  int a = 42;
-  float b = 3.14;
-  long c = a + b;
-  ```
+```cpp
+int a = 42;
+float b = 3.14;
+long c = a + b;
+```
 
-  В третьей строке произойдет следующее:
-  1. `a` приведется к `float`: \ `a = 42.0f`
-  2. Выполнится сложение: \ `a + b = 45.14f`
-  3. Результат преобразуется в `long` (дробная часть отбросится) и запишется в `c`: \ `c = 45`
-]
+В третьей строке произойдет следующее:
+1. `a` приведется к `float`: \ `a = 42.0f`
+2. Выполнится сложение: \ `a + b = 45.14f`
+3. Результат преобразуется в `long` (дробная часть отбросится) и запишется в `c`: \ `c = 45`
+
 
 == Явные преобразования
 
@@ -157,17 +114,16 @@ _Так называемые касты._
   4) `reinterpret_cast` \
   5) `reinterpret_cast + const_cast` \
 
-#example-box[
-  Пример сценария, когда может быть полезен `reinterpret_cast` --- преобразование указателя в число (чтобы узнать адрес):
+Пример сценария, когда может быть полезен `reinterpret_cast` --- преобразование указателя в число (чтобы узнать адрес):
 
-  ```cpp
-  int value = 1;
-  int *pointer = &value;
-  uint64_t address = reinterpret_cast<uint64_t>(pointer);
-  ```
-]
+```cpp
+int value = 1;
+int *pointer = &value;
+uint64_t address = reinterpret_cast<uint64_t>(pointer);
+```
 
-#focus-box()[
+
+#note-box()[
   В современном C++:
 
   - Обычно достаточно `static_cast` или `dynamic_cast` (но об этом виде каста в следующем семестре)
@@ -181,115 +137,110 @@ _Так называемые касты._
 
 Структура --- последовательная группа переменных.
 
-#grid(columns: 2, column-gutter: 2em, row-gutter: 2em,
-  example-box[
-    Базовый пример:
+Базовый пример:
 
-    ```cpp
-    struct Point {
-      int x;
-      int y;
-    };
+```cpp
+struct Point {
+  int x;
+  int y;
+};
 
-    struct Rect {
-      Point pt1;
-      Point pt2;
-    };
+struct Rect {
+  Point pt1;
+  Point pt2;
+};
 
-    int main() {
-      // Различные виды инициализации
-      Point p1 = {1, 2};
-      Point p2 = {.x = 3, .y = 4};
+int main() {
+  // Различные виды инициализации
+  Point p1 = {1, 2};
+  Point p2 = {.x = 3, .y = 4};
 
-      Rect r1{p1, {3, 4}};
-      Rect r2 = {.pt1 = {1, 2}, .pt2 = p2};
-    }
-    ```
-  ],
-  example-box[
-    Пример анонимных структур:
+  Rect r1{p1, {3, 4}};
+  Rect r2 = {.pt1 = {1, 2}, .pt2 = p2};
+}
+```
 
-    ```cpp
-    struct Button {
-      struct {
-        int x, y;
-      };
 
-      struct {
-        int w, h;
-      };
-    };
+Пример анонимных структур:
 
-    int main() {
-      Button btn = {
-        // Обращаемся к полям напрямую!
-        .x = 0, .y = 100,
-        .w = 200, .h = 50
-      };
-    }
-    ```
-  ],
-  example-box[
-    Пример синтаксиса `->` для разыменовывания полей структуры:
+```cpp
+struct Button {
+  struct {
+    int x, y;
+  };
 
-    ```cpp
-    struct Vector {
-      int x, y;
-    };
+  struct {
+    int w, h;
+  };
+};
 
-    void Scale(Vector* vec, int scale) {
-      // Обе строки делают одно и то же.
-      // Но первая строка красивее :)
-      vec->x *= scale;
-      (*vec).y *= scale;
-    }
-    ```
-  ]
-)
+int main() {
+  Button btn = {
+    // Обращаемся к полям напрямую!
+    .x = 0, .y = 100,
+    .w = 200, .h = 50
+  };
+}
+```
+
+
+Пример синтаксиса `->` для разыменовывания полей структуры:
+
+```cpp
+struct Vector {
+  int x, y;
+};
+
+void Scale(Vector* vec, int scale) {
+  // Обе строки делают одно и то же.
+  // Но первая строка красивее :)
+  vec->x *= scale;
+  (*vec).y *= scale;
+}
+```
+
 
 == Объединение
 
 Объединение --- переменная, содержащая поля, лежащие в одной и той же области памяти (в отличие от структур, где для каждого поля предназначены разные ячейки памяти).
 
-#example-box[
-  Базовый пример:
+Базовый пример:
 
-  ```cpp
-  union MyUnion {
-    // Оба поля ссылаются на одну и ту же
-    // область памяти
-    double d;
-    char c[8];
-  };
-  ```
-]
+```cpp
+union MyUnion {
+  // Оба поля ссылаются на одну и ту же
+  // область памяти
+  double d;
+  char c[8];
+};
+```
 
-#example-box[
-  Пример вариативного объекта (паттерн Tagged Union):
 
-  ```cpp
-  struct Point { int x, y; };
+Пример вариативного объекта (паттерн Tagged Union):
 
-  struct Circle { Point center; int radius; };
-  struct Rect { Point a, b; };
-  struct Triangle { Point a, b, c; };
+```cpp
+struct Point { int x, y; };
 
-  union ShapeU {
-    Circle circle;
-    Rect rect;
-    Triangle triangle;
-  };
+struct Circle { Point center; int radius; };
+struct Rect { Point a, b; };
+struct Triangle { Point a, b, c; };
 
-  enum ShapeType {
-    kCircle, kRect, kTriangle
-  };
+union ShapeU {
+  Circle circle;
+  Rect rect;
+  Triangle triangle;
+};
 
-  struct Shape {
-    ShapeType type;
-    ShapeU shape;
-  };
-  ```
-]
+enum ShapeType {
+  kCircle, kRect, kTriangle
+};
+
+struct Shape {
+  ShapeType type;
+  ShapeU shape;
+};
+```
+
 
 == Выравнивание
 
@@ -297,36 +248,35 @@ _Так называемые касты._
 
  Помимо этого, размер всей структуры должен быть кратным размеру самого большого поля, чтобы можно было быстро обращаться к массиву самих структур.
 
-#example-box[
-  Рассмотрим пример:
+Рассмотрим пример:
 
-  ```cpp
-  struct Foo {
-    char a;   // 1 байт
-    // [7 байт padding, чтобы выровнять b]
-    double b; // 8 байт
-    int c;    // 4 байта
-    // [4 байта padding, чтобы добить структуру до кратности 8]
-  };
-  ```
+```cpp
+struct Foo {
+  char a;   // 1 байт
+  // [7 байт padding, чтобы выровнять b]
+  double b; // 8 байт
+  int c;    // 4 байта
+  // [4 байта padding, чтобы добить структуру до кратности 8]
+};
+```
 
-  Итого структура занимает 24 байта, хотя из них полезной информации на 13 байт!
+Итого структура занимает 24 байта, хотя из них полезной информации на 13 байт!
 
-  Переупорядочим поля:
+Переупорядочим поля:
 
-  ```cpp
-  struct Foo {
-    double b; // 8 байт
-    int c;    // 4 байта
-    char a;   // 1 байт
-    // [3 байта padding для кратности 8]
-  };
-  ```
+```cpp
+struct Foo {
+  double b; // 8 байт
+  int c;    // 4 байта
+  char a;   // 1 байт
+  // [3 байта padding для кратности 8]
+};
+```
 
-  Теперь размер структуры равен 16 байт.
-]
+Теперь размер структуры равен 16 байт.
 
-#focus-box[
+
+#note-box[
   Для наиболее "плотной" компоновки структуры, поля нужно размещать по порядку убывания их размера.
 
   Подробнее про упаковку структур монжо почитать в #link("https://www.catb.org/esr/structure-packing/")[этой] замечательной статье.
@@ -341,27 +291,26 @@ _Указатель_ --- переменная, хранящая в себе ад
 - Для взятия указателя на объекта используется оператор `&`
 - Для обращения к переменной по указателю (т.н. _разыменовывания_) используется оператор `*`
 
-#example-box[
-  Пример --- обмен значений переменных:
+Пример --- обмен значений переменных:
 
-  ```cpp
-  void swap(int* a, int* b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-  } 
+```cpp
+void swap(int* a, int* b) {
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+} 
 
-  int main() {
-    int x = 2;
-    int y = 7;
+int main() {
+  int x = 2;
+  int y = 7;
 
-    swap(&x, &y);
-    std::cout << x << " " << y; // 7 2
+  swap(&x, &y);
+  std::cout << x << " " << y; // 7 2
 
-    swap(&a, nullptr); // Segmentation fault!
-  }
-  ```
-]
+  swap(&a, nullptr); // Segmentation fault!
+}
+```
+
 
 Указатели поддерживают арифметику: их можно складывать, вычитать. Зачем? Ответ тому --- массивы.
 
@@ -369,29 +318,28 @@ _Указатель_ --- переменная, хранящая в себе ад
 
 _Массив_ --- упорядоченая последовательность однотипных элементов. Размер массива фиксирован.
 
-#example-box[
-  Пример:
+Пример:
 
-  ```cpp
-  int main() {
-    // Различные определения массива
-    int arr1[10]; // Без инициализации, заполнен мусором!
-    int arr2[10] = {0}; // 10 нулей
-    int arr3[] = {1, 2, 3}; // Перечисление элементов без явного количества
-    int arr4[4] = {1, 2, 3, 4}; // Перечисление с явным количеством
-    int arr5[2][3] = {
-      {1, 2, 3},
-      {4, 5, 6}
-    }; // Многомерный массив
+```cpp
+int main() {
+  // Различные определения массива
+  int arr1[10]; // Без инициализации, заполнен мусором!
+  int arr2[10] = {0}; // 10 нулей
+  int arr3[] = {1, 2, 3}; // Перечисление элементов без явного количества
+  int arr4[4] = {1, 2, 3, 4}; // Перечисление с явным количеством
+  int arr5[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+  }; // Многомерный массив
 
-    // Обращение к элементам массива
-    assert(arr2[4] == 2);
-    assert(arr5[1][2] == 6)
-  }
-  ```
-]
+  // Обращение к элементам массива
+  assert(arr2[4] == 2);
+  assert(arr5[1][2] == 6)
+}
+```
 
-#focus-box[
+
+#note-box[
   Массив и указатель тесно связаны! По сути, массив в C++ --- это указатель на его первый элемент. Более того, у указателя можно обращаться по индексу, будто перед нами массив.
 
   ```cpp
@@ -410,7 +358,7 @@ _Массив_ --- упорядоченая последовательность
   Отсюда заметим, что при сложении указателя и числа, число умножается на размер типа, а не тупо прибавляется как количество байт.
 ]
 
-#focus-box[
+#note-box[
   ```cpp
   int main() {
     int arr[] = {1, 2, 3};
@@ -529,66 +477,63 @@ int main() {
 - Не имеет арифметики
 - Нельзя сделать указатель на ссылку
 
-#grid(columns: 2, column-gutter: 2em, row-gutter: 2em,
-  example-box[
-    Базовый пример:
+Базовый пример:
 
-    ```cpp
-    int main() {
-      int num = 1;
+```cpp
+int main() {
+  int num = 1;
 
-      int& ref = num;
-      ref = 123;
+  int& ref = num;
+  ref = 123;
 
-      std::cout << num; // 123
-    }
-    ```
-  ],
-  example-box[
-    Пример ссылки как аргумента функции:
+  std::cout << num; // 123
+}
+```
 
-    ```cpp
-    void swap(int& a, int& b) {
-      int t = a;
-      a = b;
-      b = t;
-    }
 
-    int main() {
-      int a = 2;
-      int b = 7;
-      swap(a, b);
+Пример ссылки как аргумента функции:
 
-      std::cout << a << " " << b; // 7 2
-    }
-    ```
-  ],
-  example-box[
-    Примеры ошибок:
-    ```cpp
-    int main() {
-      int& a; // Не инициализировано
+```cpp
+void swap(int& a, int& b) {
+  int t = a;
+  a = b;
+  b = t;
+}
 
-      int b = 1;
-      const int& c = b;
-      c = 42; // Нельзя менять const ссылку
-    }
-    ```
-  ],
-  example-box[
-    Пример UB:
-    ```cpp
-    int& foo() {
-      int x = 20;
-      return x;
-    }
+int main() {
+  int a = 2;
+  int b = 7;
+  swap(a, b);
 
-    int main() {
-      int a = foo(); // UB
-    }
-    ```
-  ]
-)
+  std::cout << a << " " << b; // 7 2
+}
+```
+
+
+Примеры ошибок:
+```cpp
+int main() {
+  int& a; // Не инициализировано
+
+  int b = 1;
+  const int& c = b;
+  c = 42; // Нельзя менять const ссылку
+}
+```
+
+
+Пример UB:
+```cpp
+int& foo() {
+  int x = 20;
+  return x;
+}
+
+int main() {
+  int a = foo(); // UB
+}
+```
+
 
 = Перегрузка функций
 
@@ -630,94 +575,91 @@ int main() {
 - Разрешены вложенные неймспейсы (но рекомендуется не больше 2-3).
 - Можно не указывать имя неймспейса. Тогда его идентификаторы будут доступны только в рамках единицы трансляции (что эквивалентно ключевому слову `static`).
 
-#grid(columns: 2, column-gutter: 1em, row-gutter: 2em,
-  example-box[
-    Базовый пример:
+Базовый пример:
 
-    ```cpp
-    namespace Foo {
-      void print() {
-        std::cout << "Foo\n";
-      }
-    }
+```cpp
+namespace Foo {
+  void print() {
+    std::cout << "Foo\n";
+  }
+}
 
-    namespace Bar {
-      void print() {
-        std::cout << "Bar\n";
-      }
-    }
+namespace Bar {
+  void print() {
+    std::cout << "Bar\n";
+  }
+}
 
-    int main() {
-      Foo::print(); // Foo
-      Bar::print(); // Bar
-    }
-    ```
-  ],  
-  example-box[
-    Пример глобального `using namespace`:
+int main() {
+  Foo::print(); // Foo
+  Bar::print(); // Bar
+}
+```
 
-    ```cpp
-    namespace Foo {
-      void print() {
-        std::cout << "Foo\n";
-      }
-    }
 
-    using namespace Foo;
+Пример глобального `using namespace`:
 
-    int main() {
-      print(); // Foo
-    }
-    ```
+```cpp
+namespace Foo {
+  void print() {
+    std::cout << "Foo\n";
+  }
+}
 
-    _Но так делать не рекомендуется._
-  ],
-  example-box[
-    Пример локального `using namespace`:
+using namespace Foo;
 
-    ```cpp
-    namespace Foo {
-      void print() {
-        std::cout << "Foo\n";
-      }
-    }
+int main() {
+  print(); // Foo
+}
+```
 
-    int main() {
-      using namespace Foo;
-      print(); // Foo
-    }
-    ```
-  ],
-  example-box[
-    Пример алиаса + вложенные неймспейсы
-    ```cpp
-    namespace SomeLongNamespace {
-      namespace Foo {
-        void print() {
-          std::cout << "Foo\n";
-        }
-      }
-    }
+_Но так делать не рекомендуется._
 
-    int main() {
-      namespace NS = SomeLongNamespace::FOO;
-      NS::print(); // Foo
-    }
-    ```
-  ],
-  example-box[
-    Пример безымянного неймспейса:
-    ```cpp
-    namespace {
-      void print() { std::cout << "Foo\n"; }
-    }
 
-    int main() {
-      print(); // Foo
+Пример локального `using namespace`:
+
+```cpp
+namespace Foo {
+  void print() {
+    std::cout << "Foo\n";
+  }
+}
+
+int main() {
+  using namespace Foo;
+  print(); // Foo
+}
+```
+
+
+Пример алиаса + вложенные неймспейсы
+```cpp
+namespace SomeLongNamespace {
+  namespace Foo {
+    void print() {
+      std::cout << "Foo\n";
     }
-    ```
-  ]
-)
+  }
+}
+
+int main() {
+  namespace NS = SomeLongNamespace::FOO;
+  NS::print(); // Foo
+}
+```
+
+
+Пример безымянного неймспейса:
+```cpp
+namespace {
+  void print() { std::cout << "Foo\n"; }
+}
+
+int main() {
+  print(); // Foo
+}
+```
+
 
 = *TODO* Компиляция, этапы, ошибки компиляции
 
@@ -836,25 +778,24 @@ int main() {
 - Internal linkage --- символ доступен только внутри единицы трансляции. Помечается ключевым словом `static`.
 - No linkage --- символ недоступен для линковки. Пример --- локальная переменная (в т.ч. статическая).
 
-#example-box[
-  Пример:
-  ```cpp
-  extern int global = 42; // External linkage
-  static int static_global = 123; // Internal linkage
+Пример:
+```cpp
+extern int global = 42; // External linkage
+static int static_global = 123; // Internal linkage
 
-  // External linkage (by default)
-  void foo() {
-    int local_num = 69; // No linkage
-    printf("Меня можно вызвать из других единиц трансляции\n");
-  }
+// External linkage (by default)
+void foo() {
+  int local_num = 69; // No linkage
+  printf("Меня можно вызвать из других единиц трансляции\n");
+}
 
-  // Internal linkage
-  static void bar() {
-    static int hvost = 239; // No linkage
-    printf("Я доступен только внутри текущего файла\n");
-  }
-  ```
-]
+// Internal linkage
+static void bar() {
+  static int hvost = 239; // No linkage
+  printf("Я доступен только внутри текущего файла\n");
+}
+```
+
 
 == Storage Duration
 

@@ -1,15 +1,5 @@
-#import "@preview/theorion:0.4.1": *
-#import cosmos.clouds: *
-#show: show-theorion
-#set-inherited-levels(0)
-
-#set document(title: [Специальные разделы высшей математики. Лекции])
-#set page(margin: 1cm, numbering: "1")
-#set text(lang: "ru", size: 12pt)
-
-#show math.equation.where(block: true): eq => {
-  block(width: 100%, inset: 0pt, align(center, eq))
-}
+#import "../template.typ": *
+#show: template.with([Специальные разделы высшей математики. Лекции])
 
 #let Eps = text(size: 18pt, $epsilon$)
 #let pr = $"pr"$
@@ -18,10 +8,6 @@
 #let lo(x) = $cal(#x)$
 #let loA = $lo(A)$
 #let loB = $lo(B)$
-
-#title()
-#outline()
-#pagebreak()
 
 = Лекция 1 (04.02.2026)
 
@@ -33,7 +19,7 @@
   1. Положительная определенность:
 
   $
-    rho (x, y) >= 0 \ quad rho(x, y) = 0 <==> x = y
+    rho (x, y) >= 0 \ rho(x, y) = 0 <==> x = y
   $
 
   2. Симметричность:

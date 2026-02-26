@@ -1,21 +1,7 @@
-#import "@preview/theorion:0.4.1": *
-#import cosmos.clouds: *
-#show: show-theorion
-#set-inherited-levels(0)
-
-#set document(title: [Математический анализ --- 2. Лекции])
-#set page(numbering: "1")
-#set text(lang: "ru", size: 12pt)
-
-#show math.equation.where(block: true): eq => {
-  block(width: 100%, inset: 0pt, align(center, eq))
-}
+#import "../template.typ": *
+#show: template.with([Математический анализ --- II. Лекции])
 
 #let replacement(..items) = $mat(delim: "[", align: #left, ..items)$
-
-#title()
-#outline()
-#pagebreak()
 
 = Лекция 1 (10.02.2026)
 

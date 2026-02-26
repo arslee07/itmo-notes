@@ -1,16 +1,8 @@
 #import "@preview/cetz:0.4.2"
 
-#show link: underline
-#show link: set text(blue)
+#import "../template.typ": *
+#show: template.with([Дискретная математика. Теормин --- II])
 
-#set page(columns: 2, margin: 1cm)
-
-#heading(outlined: false)[
-  ДМ. Теормин №2
-]
-#link("https://arslee.me")[arslee.me]
-
-#show heading.where(depth: 1): (it) => underline(it, stroke: 2pt + yellow)
 
 = Boolean Algebra
 
@@ -83,7 +75,7 @@ $
 
   Первый столбец - значения из таблицы истинности, следующие столбцы - XOR левого и левого нижнего ячеек. Верхняя строка треугольника будет соответствовать включению члена в полином:
 
-  #align(center)[#image("assets/anf_triangle.png")]
+  #align(center)[#image("assets/anf_triangle.png", width: 50%)]
 
 3. Метод карт Карно.
 
@@ -91,7 +83,7 @@ $
   - Если равна 0, идем к следующей;
   - Если равна 1, записываем в полином член, инвертируем все ячейки, где единицы совпадают с единицами ячейки (нарпирмер, если ячейка $010$ равна 1, то флипаем $011, 110, 111$ и саму $010$).
 
-  #align(center)[#image("assets/anf_karnaugh.png")]
+  #align(center)[#image("assets/anf_karnaugh.png", width: 50%)]
 
 4. Метод быстрого преобразования Фурье.
 
@@ -99,7 +91,7 @@ $
 
   Короче сложно на словах кратко объяснить, так что методом пристального взгляда на картинку:
 
-  #align(center)[#image("assets/anf_pascal.png", width: 75%)]
+  #align(center)[#image("assets/anf_pascal.png", width: 50%)]
 
 == Gray code
 
@@ -495,7 +487,7 @@ Modus tollens: $A -> B, space not B space therefore not A$
 Квадрат оппозиции - диаграмма, показывающая логическое отношение между категориальными препозициями:
 
 #align(center)[
-  #image("assets/soo.png", width: 50%)
+  #image("assets/soo.png", width: 25%)
 ]
 
 Ну типа эта диаграмма показывает всякие выводы категориальных пропозиций:
@@ -539,7 +531,7 @@ Figure (фигура) как бы описывает логические пер
 Вот картинка, может по ней будет понятно (я не понял):
 
 #align(center)[
-  #image("assets/venn.jpg")
+  #image("assets/venn.jpg", width: 50%)
 ]
 
 == First-order logic

@@ -1,7 +1,8 @@
 #import "@preview/cetz:0.4.2"
 #import "@preview/cetz-plot:0.1.3": plot, chart
-#import "@preview/theorion:0.4.1": *
-#import cosmos.clouds: *
+
+#import "../template.typ": *
+#show: template.with([Линейная алгебра. Билеты])
 
 // make all math display
 #show math.equation: it => {
@@ -11,23 +12,9 @@
   it
 }
 
-#show: show-theorion
-#set-inherited-levels(0)
-
-#set page(margin: 1cm, numbering: "1")
-#set text(lang: "ru")
-#set heading(numbering: "1.")
-
 #let struct(body) = [$chevron.l$#body$chevron.r$]
 #let Re = "Re"
 #let Im = "Im"
-
-#show link: set text(fill: blue)
-#link("https://arslee.me")[arslee.me]
-
-#outline()
-
-#pagebreak()
 
 = Понятие группы. Аддитивная и мультипликативная группы. Абелевы группы.
 
@@ -281,7 +268,8 @@
   Тогда их частное равно:
 
   $
-    bold(z_1 / z_2) = (z_1 overline(z_2))/(z_2 overline(z_2)) = ((a + b i)(c - d i)) / ((c + d i)(c - d i)) = (a c - a d i + b c i - b d i^2)/(c ^2 - c d i + c d i - d^2 i) = (a c + b d + (a d - b c) i ) / (c^2 + d^2) = bold((a c + b d) / (c^2 + d^2) + (a d - b c) / (c^2 + d^2) i)
+    bold(z_1 / z_2) &= (z_1 overline(z_2))/(z_2 overline(z_2)) = ((a + b i)(c - d i)) / ((c + d i)(c - d i)) = (a c - a d i + b c i - b d i^2)/(c ^2 - c d i + c d i - d^2 i) \
+    &= (a c + b d + (a d - b c) i ) / (c^2 + d^2) = bold((a c + b d) / (c^2 + d^2) + (a d - b c) / (c^2 + d^2) i)
   $
 ]
 
@@ -383,8 +371,8 @@
   2. С одной стороны имеем:
 
     $
-      abs(z_1 z_2) = abs((a c - b d) + (a d + b c)i) = sqrt((a c - b d)^2 + (a d + b c)^2) = sqrt(a^2 c^2 - 2 a b c d + b^2 d^2 + a^2 d^2 + 2 a b c d + b^2 c^2) \
-      = sqrt(a^2 c^2 + b^2 d^2 + a^2 d^2 + b^2 c^2)
+      abs(z_1 z_2) &= abs((a c - b d) + (a d + b c)i) = sqrt((a c - b d)^2 + (a d + b c)^2) \
+      &= sqrt(a^2 c^2 - 2 a b c d + b^2 d^2 + a^2 d^2 + 2 a b c d + b^2 c^2) = sqrt(a^2 c^2 + b^2 d^2 + a^2 d^2 + b^2 c^2)
     $
 
     С другой стороны имеем:

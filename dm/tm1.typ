@@ -1,17 +1,8 @@
 #import "@preview/cetz:0.4.2"
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 
-#show link: underline
-#show link: set text(blue)
-
-#set page(columns: 2, margin: 1cm)
-
-#heading(outlined: false)[
-  ДМ. Теормин №1
-]
-#link("https://arslee.me")[arslee.me]
-
-#show heading.where(depth: 1): (it) => underline(it, stroke: 2pt + yellow)
+#import "../template.typ": *
+#show: template.with([Дискретная математика. Теормин --- I])
 
 #let Power = $cal(P)$
 #let pair(a, b) = $chevron.l #a, #b chevron.r$
