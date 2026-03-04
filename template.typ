@@ -48,6 +48,7 @@
   set document(title: doc-title)
   set page(margin: 2cm)
   set text(size: 12pt, lang: "ru")
+  set heading(numbering: "1.1.")
 
   show link: set text(fill: blue)
   show math.equation.where(block: true): eq => {
