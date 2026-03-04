@@ -1,13 +1,21 @@
 #import "../template.typ": *
 #show: template.with([Специальные разделы высшей математики. Лекции])
 
-#let Eps = text(size: 18pt, $epsilon$)
-#let pr = $"pr"$
-#let ort = $"ort"$
 #let vector(x) = $accent(#x, ->)$
+
+// euclidean space
+#let Eps = text(size: 18pt, $epsilon$)
+#let pr = math.op("pr")
+#let ort = math.op("ort")
+
+// linear operator
 #let lo(x) = $cal(#x)$
 #let loA = $lo(A)$
 #let loB = $lo(B)$
+#let Ker = math.op("Ker")
+#let Im = math.op("Im")
+#let def = math.op("def")
+#let rank= math.op("rank")
 
 = Лекция 1 (04.02.2026)
 
@@ -679,4 +687,84 @@ $
 
 #theorem[
   Задание линейного оператора равносильно заданию его матрицы в фиксированной паре базисов.
+]
+
+= Лекция 5 (04.03.2026)
+
+== Оператор поворота плоскости
+
+Ляляля тополя матрица с синусами косинусами
+
+== Ядро и образ оператора
+
+#definition(title: "Ядро линейного оператора")[
+  _Ядром_ линейного оператора $loA : V -> W$ называется множество
+
+  $
+    Ker loA = { x in V : loA(x) = O_W }
+  $
+]
+
+#definition(title: "Образ линейного оператора")[
+  _Образом_ линейного оператора $loA : V -> W$ называется множество
+
+  $
+    Im loA = { y in W | exists x in V : loA(x) = y }
+  $
+]
+
+#theorem[
+  Для любого линейного оператора $loA : V -> W$:
+  1. $Ker loA$ --- подпространство $V$
+  2. $Im loA$ --- подпространство $W$
+]
+
+#definition(title: "Дефект линейного оператора")[
+  _Дефектом_ линейного оператора $loA : V -> W$ называется размерность его ядра:
+
+  $
+    def loA = dim Ker loA
+  $
+]
+
+#definition(title: "Ранг линейного оператора")[
+  _Дефектом_ линейного оператора $loA : V -> W$ называется размерность его образа:
+
+  $
+    rank loA = dim Im loA
+  $
+]
+
+#theorem(title: "О рангах и дефектах")[
+  Пусть дан линейный оператор $loA : V -> W$. Если $dim V != oo$, то
+
+  $
+    dim V = rank loA + def loA
+  $
+]
+
+#theorem[
+  Пусть дано:
+  - $loA : V -> W, space x in V, space y = A(x) in W$
+  - $x = (x_1, ..., x_n)^T$ --- координатный столбец $x$ в базисе $e$
+  - $y = (y_1, ..., y_n)^T$ --- координатный столбец $y$ в базисе $u$
+
+  Тогда: $ y = A_(e ->u) dot x $
+]
+
+== Ранг матрицы линейного оператора
+
+#theorem[
+  Ранг линейного оператора $loA : A -> W$ равен рангу его матрицы в любых базисах пространств $V$ и $W$:
+
+  $
+    rank loA = rank A_(e -> u)
+  $
+]
+
+#theorem(title: "следствие")[
+  Дефект оператора вычисляется как по формуле:
+  $
+    def loA = dim V - rank A_(e -> u),
+  $
 ]
