@@ -59,27 +59,27 @@ nav[role='doc-toc'] li ol {
 }
 
 .definition {
-  border-color: #2ecc40;
+  border-color: #239930;
 }
 
 .theorem {
-  border-color: #ff4136;
+  border-color: #be3129;
 }
 
 .property {
-  border-color: #0074d9;
+  border-color: #0057a3;
 }
 
 .definition-title {
-  color: #2ecc40;
+  color: #239930;
 }
 
 .theorem-title {
-  color: #ff4136;
+  color: #be3129;
 }
 
 .property-title {
-  color: #0074d9;
+  color: #0057a3;
 }
 
 details {
