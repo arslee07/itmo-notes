@@ -70,65 +70,71 @@ $
 
 Круги Эйлера -- визуальное представление множеств и их отношений (подмножество, пересечение) с помощью замкнутых фигур (обычно кругов):
 
-#grid(columns: 2, column-gutter: 32pt, align: center + horizon)[
-  #cetz.canvas({
-    import cetz.draw: *
-    circle((0, -0), radius: 1)
-    circle((0.1, -0.3), radius: 0.6)
-    circle((2, 0), radius: 0.6)
+#figure[
+  #render[
+    #grid(columns: 2, column-gutter: 64pt, align: center + horizon,
+      cetz.canvas({
+        import cetz.draw: *
+        circle((0, -0), radius: 1)
+        circle((0.1, -0.3), radius: 0.6)
+        circle((2, 0), radius: 0.6)
 
-    content((-0.1, -0.1), [*A*])
-    content((-0.45, 0.5), [*B*])
-    content((1.8, 0.2), [*C*])
+        content((-0.1, -0.1), [*A*])
+        content((-0.45, 0.5), [*B*])
+        content((1.8, 0.2), [*C*])
 
-    content((0.4, -0.1), [1])
-    content((0.0, -0.6), [2])
-    content((0.35, -0.5), [3])
-    content((0.1, 0.6), [4])
-    content((0.5, 0.55), [5])
-    content((2.0, -0.3), [6])
-    content((2.3, -0.2), [7])
-    content((2.3, 0.2), [8])
-  })
-][
-  $
-    &A = {1, 2, 3} \
-    &B = {1, 2, 3, 4, 5} \
-    &C = {6, 7, 8} \
-    \
-    &A subset.eq B \
-    &C inter B = emptyset
-  $
+        content((0.4, -0.1), [1])
+        content((0.0, -0.6), [2])
+        content((0.35, -0.5), [3])
+        content((0.1, 0.6), [4])
+        content((0.5, 0.55), [5])
+        content((2.0, -0.3), [6])
+        content((2.3, -0.2), [7])
+        content((2.3, 0.2), [8])
+      }),
+      $
+        &A = {1, 2, 3} \
+        &B = {1, 2, 3, 4, 5} \
+        &C = {6, 7, 8} \
+        \
+        &A subset.eq B \
+        &C inter B = emptyset
+      $
+    )
+  ]
 ]
 
 Диаграмма Венна – визуальное представление множеств и их отношений с помощью пересекающихся кругов. Каждый круг означает множество, и их пересениеие показывает пересечения:
 
-#grid(columns: 2, column-gutter: 32pt, align: center + horizon)[
-  #cetz.canvas({
-    import cetz.draw: *
+#figure[
+  #render[
+    #grid(columns: 2, column-gutter: 64pt, align: center + horizon,
+      cetz.canvas({
+        import cetz.draw: *
 
-    content((0.5, 2.5), [*A*])
-    content((-1.25, -0.75), [*B*])
-    content((2.25, -0.75), [*C*])
-    circle((0, 0))
-    circle((1, 0))
-    circle((0.5, 1))
+        content((0.5, 2.5), [*A*])
+        content((-1.25, -0.75), [*B*])
+        content((2.25, -0.75), [*C*])
+        circle((0, 0))
+        circle((1, 0))
+        circle((0.5, 1))
 
-    content((0.25, 1.5), [1])
-    content((0.75, 1.5), [2])
-    content((1.5, -0.25), [3])
-    content((-0.1, 0.65), [4])
-    content((0.5, 0.45), [5])
-  })
-][
-  $
-    &A = {1, 2, 4, 5} \
-    &B = {4, 5} \
-    &C = {3, 5} \
-    \
-    &A inter B = {4, 5} \
-    &A inter B inter C = {5}
-  $
+        content((0.25, 1.5), [1])
+        content((0.75, 1.5), [2])
+        content((1.5, -0.25), [3])
+        content((-0.1, 0.65), [4])
+        content((0.5, 0.45), [5])
+      }),
+      $
+        &A = {1, 2, 4, 5} \
+        &B = {4, 5} \
+        &C = {3, 5} \
+        \
+        &A inter B = {4, 5} \
+        &A inter B inter C = {5}
+      $
+    )
+  ]
 ]
 
 

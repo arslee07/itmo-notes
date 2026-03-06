@@ -318,7 +318,7 @@
 #example[
   Изобразим числа $(2 + 3 i), (-4 - 2 i)$ на комплексной плоскости:
 
-  #align(center)[
+  #figure[
     #cetz.canvas({
       import cetz.draw: *
 
@@ -399,7 +399,7 @@
 
 Понятия модуля и аргумента комплексного числа подводят нас к еще одной геометрической модели: полярная система координат. Комплексное число можно представить в виде $(r, phi) = (|z|, arg z)$. На примере $z = 4 + 3 i$:
 
-#align(center)[
+#figure[
   #cetz.canvas({
     import cetz.draw: *
 
@@ -562,36 +562,40 @@
 ]
 
 #proof[
-  #align(center)[
-    #grid(
-      columns: 3,
-      align: center + horizon,
-      column-gutter: 2em,
-      $
-        e^(i phi) + e^(-i phi)
-        &= (cos phi + i sin phi) + (cos (-phi) + i sin (-phi)) \
-        &= cos phi + i sin phi + cos phi - i sin phi \
-        &= 2 cos phi \
-      $,
-      $==>$,
-      $cos phi = (e^(i phi) + e^(-i phi)) / 2$
-    )
+  #figure[
+    #render[
+      #grid(
+        columns: 3,
+        align: center + horizon,
+        column-gutter: 2em,
+        $
+          e^(i phi) + e^(-i phi)
+          &= (cos phi + i sin phi) + (cos (-phi) + i sin (-phi)) \
+          &= cos phi + i sin phi + cos phi - i sin phi \
+          &= 2 cos phi \
+        $,
+        $==>$,
+        $cos phi = (e^(i phi) + e^(-i phi)) / 2$
+      )
+    ]
   ]
 
-  #align(center)[
-    #grid(
-      columns: 3,
-      align: center + horizon,
-      column-gutter: 2em,
-      $
-        e^(i phi) - e^(-i phi)
-        &= (cos phi + i sin phi) - (cos (-phi) + i sin (-phi)) \
-        &= cos phi + i sin phi - cos phi + i sin phi \
-        &= 2 i sin phi \
-      $,
-      $==>$,
-      $sin phi = (e^(i phi) - e^(-i phi)) / (2 i)$
-    )
+  #figure[
+    #render[
+      #grid(
+        columns: 3,
+        align: center + horizon,
+        column-gutter: 2em,
+        $
+          e^(i phi) - e^(-i phi)
+          &= (cos phi + i sin phi) - (cos (-phi) + i sin (-phi)) \
+          &= cos phi + i sin phi - cos phi + i sin phi \
+          &= 2 i sin phi \
+        $,
+        $==>$,
+        $sin phi = (e^(i phi) - e^(-i phi)) / (2 i)$
+      )
+    ]
   ]
 ]
 
@@ -688,7 +692,7 @@
 
   Выполним деление столбиком:
 
-  #align(center)[
+  #figure[
     #image("assets/polynomial-division.png", width: 40%)
   ]
 
@@ -897,7 +901,7 @@
 
 #note-box[
   Визуализация произведения матриц $A_(42) dot B_(23)$:
-  #align(center)[
+  #figure[
     #image("assets/matmul.svg", width: 25%)
   ]
 ]
@@ -1729,7 +1733,7 @@
     A (x - x_0) + B (y - y_0) + C (z - z_0) = 0
   $
 
-  #align(center)[
+  #figure[
     #image("assets/plane-eq1.png", width: 50%)
   ]
 ]
@@ -1802,7 +1806,7 @@
 
   - $a, b, c$ --- длины отрезков, отсекающих координатные оси
 
-  #align(center)[
+  #figure[
     #image("assets/plane-eq2.png", width: 50%)
   ]
 ]
@@ -1839,7 +1843,7 @@
   - $cos alpha, cos beta, cos gamma$ --- направляющие косинусы нормали плоскости
   - $p$ --- расстояние от начала координат до плоскости
 
-  #align(center)[
+  #figure[
     #image("assets/plane-eq3.png", width: 50%)
   ]
 ]
@@ -2081,7 +2085,7 @@
 #example[
   При $k = 1$, $b = 2$:
 
-  #align(center)[
+  #figure[
     #image("assets/line-eq1.png", width: 50%)
   ]
 ]
@@ -2097,7 +2101,7 @@
 #example[
   При $A = 1$, $B = -1$, $C = -2$:
 
-  #align(center)[
+  #figure[
     #image("assets/line-eq2.png", width: 50%)
   ]
 
@@ -2106,7 +2110,7 @@
   - а затем поделить уравнение на $B$: $y = -A/B x - C/B$,
   то мы получим уравнение, уравнение с угловым коэффициентом. Так зачем же тогда общее уравнение? С ее помощью можно выразить прямую, параллельную $O y$. Пример при $A = 1$, $B = 0$, $C = -2$:
 
-  #align(center)[
+  #figure[
     #image("assets/line-eq1-1.png", width: 50%)
   ]
 ]
@@ -2123,7 +2127,7 @@
 #example[
   При $a = -3$, $b = 2$:
 
-  #align(center)[
+  #figure[
     #image("assets/line-eq3.png", width: 50%)
   ]
 ]
@@ -2139,7 +2143,7 @@
 #example[
   При $M_1(-1, -1)$ и $M_2(2, 3)$:
 
-  #align(center)[
+  #figure[
     #image("assets/line-eq4.png", width: 50%)
   ]
 ]
@@ -2156,7 +2160,7 @@
 #example[
   Для точки $M_1(3, 2)$ и $k = 1$:
 
-  #align(center)[
+  #figure[
     #image("assets/line-eq6.png", width: 50%)
   ]
 ]
@@ -2173,7 +2177,7 @@
 #example[
   При $alpha = pi/3$, $p = 1.5$:
 
-  #align(center)[
+  #figure[
     #image("assets/line-eq5.png", width: 50%)
   ]
 ]
@@ -2196,7 +2200,7 @@
   - Эксцентриситет (см. билет ниже): $epsilon = c/a < 1$. Чем ближе к 0, тем "круглее". В нуле окружность.
   - Директрисы: прямые $x = plus.minus a/epsilon$
 
-  #align(center)[
+  #figure[
     #image("assets/ellipse.png", width: 75%)
     #link("https://www.geogebra.org/calculator/hkxnmhbx")
   ]
@@ -2218,7 +2222,7 @@
   - Асимптоты: $y = plus.minus b/a x$
   - Директрисы: прямые $x = plus.minus a/epsilon$
 
-  #align(center)[
+  #figure[
     #image("assets/hyperbola.png", width: 75%)
     #link("https://www.geogebra.org/calculator/vdqknr8h")
   ]
@@ -2239,7 +2243,7 @@
   - Директриса: $x = -p/2$
   - Эксцентриситет: $epsilon = 1$
 
-  #align(center)[
+  #figure[
     #image("assets/parabola.png", width: 75%)
     #link("https://www.geogebra.org/calculator/fwwnkrtc")
   ]

@@ -347,3 +347,93 @@ $
 $
   integral (d x)/(sin x) = replacement(cos x = sin(x + pi/2); d x = d(x + pi/2)) = integral (d(x + pi/2))/sin(x + pi/2) = ln abs(tg (x + pi/2)/2) + C = ln abs(tg x/2) + C
 $
+
+= Лекция 4 (03.03.2026)
+
+== Берущиеся и неберущиеся интегралы
+
+#table(
+  columns: (1fr, 1fr),
+  align: center,
+  table.header([*Берущиеся*], [*Неберущиеся*]),
+  stroke: (x, y) => if (x == 0) { (right: 1pt) } + if (y == 0) { (bottom: 1pt) },
+  [$ integral P_n (x) sin n x space d x $], [$ integral (sin n x)/(P_n (x)) space d x $],
+  [$ integral P_n (x) cos n x space d x $], [$ integral (cos n x)/(P_n (x)) space d x $],
+  [$ integral e^(a x) sin b x space d x $], [$ (e^(a x ))/(P_n (X)) space d x $],
+  [$ integral e^(a x) cos b x space d x $], [$ integral R(x, sqrt(a x^3 + b x^2 + c x + d)) space d x $],
+  [$ integral R(x, sqrt(a x^2 + b^x + c)) space d x $], [$ integral R(x, sqrt(a x^3 + b x^2 + c x + d)) space d x $],
+  [], [$ R(x, sqrt(a x^4 + b x^3 + c x^2 + d x + e)) space d x $],
+  [], [$ e^x^2 space d x $]
+)
+
+== Определенный интеграл
+
+Бла бла бла и картинки прикольные
+
+== Определение интеграла Римана
+
+#definition(title: [разбиение])[
+  _Разбиением_ $r$ отрезка $[a; b]$ называется конечное множество точек $r = {x_0, x_1, ..., x_n}$ такое, что $a = x_0 < x_1 < ... < x_n = b$, отрезки $[x_(i - 1), x_i]$ --- частичные (элементарные) отрезки
+
+  Длина $i$-го отрезка: $Delta x_i = x_(i - 1) - x_i, space i = overline(1"," n)$
+]
+
+#definition(title: "ранг разбиения")[
+  _Рангом_ разбиения называется величина
+  $
+    lambda (r) = max_(1 <= i <= n) {Delta x_i}
+  $
+]
+
+#definition(title: "выборка")[
+  Набор произвольных точек
+  $
+    xi = {x_i}, quad xi_i in [x_(i - 1), x_i], quad i = overline(1"," n)
+  $
+
+  называется _выборкой_ (оснащением разбиения).
+]
+
+#definition(title: "интегральная сумма Римана")[
+  _Интегральной суммой Римана_ функции $f(x)$ на $[a; b]$ называется число
+  $
+    delta_tau (f, xi) = sum_(i = 1)^n f(xi_i) Delta x_i
+  $
+]
+
+#definition(title: "интеграл Римана")[
+  Число $I$ называется _определенным интегралом Римана_ от функции $f(x)$ на $[a; b]$, если $forall epsilon > 0 : exists delta > 0$ такое, что $forall tau$ с $lambda(tau) < delta$ и для любого выбора выполняется неравенство
+  $
+    abs(delta_tau (f, xi) - I) < epsilon
+  $
+
+  Тогда $f(x)$ называется интегрируемой по Риману на $[a; b]$.
+
+  $
+    I = integral_a^b f(x) d x = lim_(lambda(tau) -> 0) delta_tau (f, xi) = lim_(lambda(tau) -> 0 \ n->oo) sum_(i = 1)^n f(xi_i) delta x_i
+  $
+]
+
+#definition(title: "определенный интеграл по Риману")[
+  $
+    integral_a^b f(x) d x 
+  $
+
+  - $a$ --- верхний предел интегрирования
+  - $b$ --- нижний предел интегрирования
+  - $f(x) d x$ --- подынтегральное выражение
+  - $f(x)$ --- подынтегральная функция
+]
+
+#definition(title: "интегрируемая функция")[
+  Если для $f(x)$ существует интеграл Римана на $[a; b]$, то функция называется _интегрируемой на $[a; b]$_.
+]
+
+#example[
+  $f(x) = C$ интегрируема на $[a; b]$:
+
+  $
+    delta_tau (f, xi) = sum_(i = 1)^n f(xi_i) Delta x_i = sum_(i = 1)^n C Delta x_i = C sum_(i = 1)^n Delta x_i = C (b - a) =  integral C d x
+  $
+]
+
