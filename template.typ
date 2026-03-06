@@ -104,20 +104,30 @@ figure[role='math'] {
 }
 "
 
-#let thm-box(color, name, title, body, html-class) = [
-  #html.elem("div", attrs: (class: "thm-box " + html-class))[
-    #block(stroke: 0.5pt + color, width: 100%, inset: 1em, radius: 4pt)[
+#let thm-box(color, name, title, body, html-class) = context [
+  #if target() == "html" {
+    html.elem("div", attrs: (class: "thm-box " + html-class))[
       #par[
         #html.elem("span", attrs: (class: html-class + "-title"))[
           #if title == none [
-            #text(fill: color)[*#name. *]
+            #text[*#name. *]
           ] else [
-            #text(fill: color)[*#name (#title). *]
+            #text[*#name (#title). *]
           ]
         ] #body
       ]
     ]
-  ]
+  } else {
+    block(stroke: 0.5pt + color, width: 100%, inset: 1em, radius: 4pt)[
+      #par[
+        #if title == none [
+          #text(fill: color)[*#name. *]
+        ] else [
+          #text(fill: color)[*#name (#title). *]
+        ]
+      ] #body
+    ]
+  }
 ]
 
 #let note-box(body) = [
