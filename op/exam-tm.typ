@@ -5,7 +5,9 @@
 
 _Начну сию книжку с запугивания._ Вот так классифицируются типы в C++:
 
-#image("assets/TypeHiearchy.svg")
+#figure[
+  #image("assets/TypeHiearchy.svg")
+]
 
 Но в данном разделе теормина нас только раздел "fundamental". Оттуда выделим следующие типы:
 
