@@ -42,7 +42,7 @@ jobs:
               continue
             fi
 
-            out="build/"$(echo $in | sed -e "s/\.\///" -e "s/\//-/" -e "s/\.typ/\.pdf/")
+            out="build/"$(echo $in | sed -e "s/\.\///" -e "s/\//-/" -e "s/\.typ/\.html/")
             echo Compiling $in to $out...
             typst compile $in $out --root=. --features=html --format=html
           done
