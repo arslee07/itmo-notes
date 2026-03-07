@@ -104,6 +104,11 @@ figure[role='math'] {
 }
 "
 
+#let target() = {
+  if "target" in dictionary(std) { std.target() }
+  else { "paged" }
+}
+
 #let thm-box(color, name, title, body, html-class) = context [
   #if target() == "html" {
     html.elem("div", attrs: (class: "thm-box " + html-class))[
