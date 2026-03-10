@@ -437,3 +437,197 @@ $
   $
 ]
 
+= Лекция 5 (10.03.2026)
+
+== Основные свойства определенного интеграла
+
+Подразумевается, что все функции из данных свойств интегрируемы на $[a; b]$ и рассматриваются только на этом отрезке.
+
+<def-int-prop-1>
+#property(title: 1)[
+  $
+    integral_a^b c f(x) d x = c integral_a^b f(x) d x
+  $
+]
+
+#proof[
+  $
+    integral_a^b c f(x) d x = lim_(n->oo) sum_(i=1)^n c f(xi_i) Delta x_i = c lim_(n->oo) sum_(i=1)^n f(xi_i) Delta x_i = c integral_a^b f(x) d x
+  $
+]
+
+<def-int-prop-2>
+#property(title: 2)[
+  $
+    integral_a^b (f_1 (x) + f_2 (x)) d x = integral_a^b f_1 (x) d x + integral_a^b f_2 (x) d x
+  $
+]
+
+#proof[
+  Аналогично по определению.
+]
+
+#property(title: 3)[
+  $
+    integral_a^b f(x) d x = integral_a^c f(x) d x + integral_c^b f(x) d x, quad c in [a; b]
+  $
+]
+
+#proof[
+  $
+    integral_a^b f(x) d x &= lim_(n->oo) sum_(i=1)^n f(xi_i) Delta x_i \
+    &= lim_(n->oo) (sum_(i=1)^k f(xi_i) + sum_(i=k+1)^n f(xi_i)) Delta x_i \
+    &= lim_(n->oo) sum_(i=1)^k f(xi_i) Delta x_i + lim_(n->oo) sum_(i=k+1)^n f(xi_i) Delta x_i \
+    &= integral_a^c f(x) d x + integral_c^b f(x) d x
+  $
+]
+
+<def-int-prop-4>
+#property(title: 4)[
+  $
+    f(x) >= 0 wide==>wide integral_a^b f(x) d x >= 0 \
+    f(x) <= 0 wide==>wide integral_a^b f(x) d x <= 0 \
+  $
+]
+
+#proof[
+  
+]
+
+#property(title: 5)[
+  $
+    f(x) >= g(x) wide==>wide integral_a^b f(x) d x >= integral_a^b g(x) d x
+  $
+]
+
+#proof[
+  По свойству #link(<def-int-prop-4>)[(4)]:
+
+  $
+    f(x) - g(x) >= 0 quad ==> quad integral_a^b (f(x) - g(x)) d x >= 0
+  $
+
+  Отсюда из свойств #link(<def-int-prop-2>)[(1)] и #link(<def-int-prop-2>)[(2)]:
+
+  $
+    integral_a^b (f(x) - g(x)) d x = integral_a^b f (x) d x - integral_a^b g (x) d x >= 0 wide==>wide integral_a^b f(x) d x >= integral_a^b g(x) d x
+  $
+]
+
+#property(title: 6)[
+  ...
+]
+
+#proof[
+  ...
+]
+
+#property(title: [7, теорема о среднем])[
+  $
+    exists c in [a; b] : quad integral_a^b f(x) d x = f(c) (b - a)
+  $
+]
+
+#proof[
+  Пусть на $[a; b]$ выполняется $m <= f(x) <= M$. Отсюда имеем, что
+  $
+    m (b-a) <= integral_a^b f(x) d x <= M (b-a).
+  $
+
+  Разделим неравенство на $b-a$:
+
+  $
+    m <= 1/(b-a) integral_a^b f(x) d x <= M.
+  $
+
+  Так как $f$ непрерывна на $[a; b]$, тогда найдется такая $c in [a; b]$, что
+  $
+    f(c) = 1/(b-a) integral_a^b f(x) d x.
+  $
+
+  Умножив равенство на $b-a$ получаем, что
+  $
+    integral_a^b f(x) d x = f(c) (b - a)
+  $
+]
+
+#property(title: 8)[
+  $
+    abs(integral_a^b f(x) d x) <= integral_a^b abs(f(x)) d x
+  $
+]
+
+== Вычисление определенного интеграла
+
+#definition(title: [Интеграл с переменным верхним пределом])[
+  Пусть $f(x)$ интегрируема на $[a; b]$. Выберем произвольное $x in [a; b]$. Тогда:
+
+  $
+    integral_a^x f(t) d  t = F(x)
+  $
+
+  называется _интегралом с переменным верхним пределом_.
+]
+
+#theorem(title: [Барроу])[
+  Если $f$ непрерывна на $[a; b]$, то
+  $
+    F'(x) = (integral_a^x f(t) d t)' = f(x)
+  $
+]
+
+#theorem(title: [Основная теорема интегрального исчисления])[
+  Если $f$ непрерывна на $[a; b]$ и $Phi(x)$ --- ее любая первообразная, то:
+
+  $
+    integral_a^b f(x) d x = Phi(x) |_a^b = Phi(b) - Phi(a)
+  $
+]
+
+#proof[
+  Если $x = a$, то:
+  $
+    integral_b^a f(t) d t = Phi(a) + C \
+    0 = Phi(a) + C \
+    C = -Phi(a)
+  $
+
+  Если $x = b$, то:
+  $
+    integral_b^a f(t) d t = Phi(b) + C = Phi(b) - Phi(a)
+  $
+]
+
+== Замена переменной в определенном интеграле
+
+#theorem(title: [Замена переменной])[
+  Пусть дано:
+  - $f(x)$ непрерывна на $[a; b]$
+  - $phi(t)$ дифференцируема на $[alpha; beta]$
+  - $phi : [alpha; beta] -> [a; b]$
+  - $phi(alpha) = a$
+  - $phi(beta) = b$
+
+  Тогда:
+
+  $
+    integral_a^b f(x) d x = replacement(x = phi(t); d x = phi'(t) d t; alpha = phi^(-1) (a); beta = phi^(-1) (b)) = integral_alpha^beta f(phi(t)) space phi'(t) space d t
+  $
+]
+
+== Формула интегрирования по частям в определенном интеграле
+
+#theorem(title: [Интегрирование по частям])[
+  Если $u(x)$ и $v(x)$ дифференцируемы на $[a; b]$, то:
+
+  $
+    integral_a^b u d v = u v |_b^a - integral_a^b v d u
+  $
+]
+
+#example[
+  $
+    &integral_0^1 x sqrt(1 - x^2) d x = replacement(x = sin t; d x = cos t d t; 0 = sin t"," t = 0; 1 = sin t"," t = pi/2) \
+    &wide = integral_0^(pi/2) sin t space sqrt(1 - sin^2 t) cos t space d t = integral_0^(pi/2) cos^2 t space sin t space d t = - integral_0^(pi/2) cos^2 t space d cos t = - (cos^3 t) / 3 |_0^(pi/2) = 1/3
+  $
+]
