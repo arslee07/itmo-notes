@@ -203,14 +203,6 @@ figure[role='math'] {
 
   show link: set text(fill: blue)
 
-  show math.equation.where(block: false): it => {
-    if target() == "html" {
-      html.elem("span", attrs: (role: "math"), html.frame(it))
-    } else {
-      it
-    }
-  }
-
   show math.equation.where(block: true): it => {
     if target() == "html" {
       html.elem("figure", attrs: (role: "math"), html.frame(it))
@@ -238,22 +230,31 @@ figure[role='math'] {
   )
 
   if target() == "html" {
+    show math.equation.where(block: false): it => {
+      html.elem("span", attrs: (role: "math"), html.frame(it))
+    }
+
     html.head([
       #html.style(css-stylesheet)
     ])
+
+    title()
+    outline()
+
+    body
+  } else {
+    title()
+    outline()
+
+    place(bottom + center, float: true, dy: 2cm)[
+      #link("https://itmo.arslee.me")[itmo.arslee.me]
+      #image("assets/icon.png", height: 12%)
+    ]
+    pagebreak()
+
+    set page(numbering: "1")
+    counter(page).update(1)
+
+    body
   }
-
-  title()
-  outline()
-
-  place(bottom + center, float: true, dy: 2cm)[
-    #link("https://itmo.arslee.me")[itmo.arslee.me]
-    #image("assets/icon.png", height: 12%)
-  ]
-  pagebreak()
-
-  set page(numbering: "1")
-  counter(page).update(1)
-
-  body
 }
