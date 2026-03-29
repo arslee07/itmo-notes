@@ -50,3 +50,7 @@
 Что-то недописано? Хотите помочь? Не стесняйтесь отправить Pull Request!
 
 Если желаете скооперироваться, пишите в ЛС. *Все-таки, в одиночку писать тяжеловато...*
+
+---
+
+[<img width="400px" src="https://raw.githubusercontent.com/gist/fenjalien/1463a19ba2b91d061ed35e295494e0b3/raw/2d5079562396d43e615cf0ffe81da60438b184c9/typst-logo.svg" />](https://typst.app/)
