@@ -172,7 +172,7 @@ figure[role='math'] {
       $square$
     ]
   ] else [
-    _Доказательство._ #body #h(1fr) $square$
+    *Доказательство.* #body #h(1fr) $square$
   ]
 ]
 
@@ -183,7 +183,7 @@ figure[role='math'] {
       #body
     ]
   ] else [
-    _Пример._ #body #h(1fr) $square$
+    *Пример.* #body
   ]
 ]
 
