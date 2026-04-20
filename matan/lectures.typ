@@ -2,6 +2,7 @@
 #show: template.with([Математический анализ --- II. Лекции])
 
 #let replacement(..items) = $mat(delim: "[", align: #left, ..items)$
+#let evaluated(expr, size: 100%) = $lr(#expr|, size: #size)$
 
 = Лекция 1 (10.02.2026)
 
@@ -580,7 +581,7 @@ $
   Если $f$ непрерывна на $[a; b]$ и $Phi(x)$ --- ее любая первообразная, то:
 
   $
-    integral_a^b f(x) d x = Phi(x) |_a^b = Phi(b) - Phi(a)
+    integral_a^b f(x) d x = evaluated(Phi(x))_a^b = Phi(b) - Phi(a)
   $
 ]
 
@@ -621,13 +622,170 @@ $
   Если $u(x)$ и $v(x)$ дифференцируемы на $[a; b]$, то:
 
   $
-    integral_a^b u d v = u v |_b^a - integral_a^b v d u
+    integral_a^b u d v = evaluated(u v)_b^a - integral_a^b v d u
   $
 ]
 
 #example[
   $
     &integral_0^1 x sqrt(1 - x^2) d x = replacement(x = sin t; d x = cos t d t; 0 = sin t"," t = 0; 1 = sin t"," t = pi/2) \
-    &wide = integral_0^(pi/2) sin t space sqrt(1 - sin^2 t) cos t space d t = integral_0^(pi/2) cos^2 t space sin t space d t = - integral_0^(pi/2) cos^2 t space d cos t = - (cos^3 t) / 3 |_0^(pi/2) = 1/3
+    &wide = integral_0^(pi/2) sin t space sqrt(1 - sin^2 t) cos t space d t = integral_0^(pi/2) cos^2 t space sin t space d t = - integral_0^(pi/2) cos^2 t space d cos t = evaluated(-(cos^3 t)/3)_0^(pi/2) = 1/3
   $
 ]
+
+= Лекция n (31.03.2026)
+
+== Несобственные интегралы
+
+Пусть дано:
+- $f(x)$ определена и непрерывна на $[a; +oo)$
+- $xi in [a; +oo)$, $xi >= a$, $[a; xi]$
+Тогда $integral_a^xi f(x) d x$ существует и зависит от $xi$.
+
+#definition(title: "Несобственный интеграл")[
+  _Несобственным интегралом_ от функции $f(x)$ по неограниченному промежутку $[a; +oo)$ называется
+  $
+    lim_(xi -> +oo) integral_a^xi f(x) d x quad =_"def" quad integral_a^(+oo) f(x) d x
+  $
+
+  (несобственный интеграл 1-го рода)
+]
+
+#definition(title: "Сходящийся несобственный интеграл")[
+  Несобственный интеграл $integral_a^(+oo) f(x) d x$ называется _сходящимся_, если
+  $
+    lim_(xi -> +oo) integral_a^xi f(x) d x quad "конечный"
+  $
+]
+
+#definition(title: "Расходящийся несобственный интеграл")[
+  Несобственный интеграл $integral_a^(+oo) f(x) d x$ называется _расходящимся_, если
+  $
+    lim_(xi -> +oo) integral_a^xi f(x) d x quad "бесконечный или не существует"
+  $
+]
+
+#definition[
+  Если несобственный интеграл сходится, то $f(x)$ является интегрируемой в несобственном смысле
+]
+
+#definition(title: [Несобственный интеграл на $(-oo; a]$])[
+  $
+    integral_(-oo)^a f(x) d x = lim_(xi -> -oo) integral_xi^a f(x) d x
+  $
+]
+
+#definition(title: [Несобственный интеграл на $(-oo; +oo)$])[
+  $
+    integral_(-oo)^(+oo) f(x) d x = integral_(-oo)^a f(x) d x + integral_a^(+oo) f(x) d x
+  $
+]
+
+#example[
+  Исследовать интеграл $integral_1^(+oo) (d x)/(x^alpha)$ на сходимость.
+
+  $
+    integral_1^(+oo) (d x)/(x^alpha) = lim_(x->+oo) integral_1^xi (d x)/(x^alpha) = lim_(xi->+oo) (evaluated(x^(1 - alpha)/(1 - alpha))_1^xi) = lim_(xi->+oo) (xi^(1-alpha)/(1 - alpha) - 1/(1 - alpha)) = cases(1 / (alpha - 1) quad alpha > 1, +oo quad alpha < 1)
+  $
+
+  Рассмотрим случай $alpha = 1$.
+
+  $
+    integral_1^(+oo) (d x)/x = lim_(xi->+oo) integral_1(xi) (d x)/x = lim_(xi -> +oo) (evaluated(ln x)_1^xi) = lim_(xi->+oo) ln xi = +oo
+  $
+
+  То есть, данный интеграл сходится при $alpha > 1$ и расходится при $alpha <= 1$.
+]
+
+#example[
+  Исследовать интеграл $integral_0^1 (d x)/(x^alpha)$ на сходимость.
+
+  $
+    integral_0^1 (d x)/(x^alpha) = lim_(epsilon -> 0) integral_epsilon^1 (d x)/(x^alpha) = lim_(epsilon->0) (1/(alpha - 1) (1 - epsilon^(1 - alpha))) = cases(-oo quad &alpha > 1, 1/(alpha - 1) quad &alpha < 1)
+  $
+
+  Рассмотрим случай $alpha = 1$.
+
+  $
+    integral_0^1 (d x)/(x^alpha) = lim_(epsilon -> 0) integral_epsilon^1 (d x)/x = lim_(epsilon -> 0) (evaluated(ln x)_epsilon^1) = lim_(epsilon -> 0) (ln 1 - ln epsilon) = +oo
+  $
+
+  То есть, данный интеграл сходится при $alpha >= 1$ и расходится при $alpha < 1$.
+]
+
+== Свойства несобственных интегралов
+
+Рассмотрим $integral_a^b f(x) d x$, предполагая, что:
+- $f(x)$ определена на $[a; b)$, где $a in RR$, $b in RR union {+oo}$;
+- $f(x)$ интегрирумый по Риману на $[a; xi]$ при $forall xi in (a; b)$, а также
+  $
+    integral_a^b f(x) d x = lim_(xi -> b - 0) integral_a^xi f(x) d x quad b != +oo \
+    integral_a^(+oo) f(x) d x = lim_(xi -> +oo) integral_a^xi f(x) d x quad b = +oo \
+  $
+
+#property(title: "Линейность")[
+  Если $f(x)$ и $g(x)$ сходятся на $[a; b)$, то
+  $
+    forall lambda, mu in RR. quad integral_a^b (lambda f(x) + mu g(x)) d x = lambda integral_a^b f(x) d x + mu integral_a^b g(x) d x
+  $
+]
+
+#property(title: "Формула Ньютона-Лейбница")[
+  Если $f(x)$ непрерывна на $[a; +oo)$ и $F(x)$ --- первообразная $f(x)$, то $integral_a^b f(x) d x$ сходится тогда и только тогда, когда
+  $
+    lim_(xi->b) F(xi) = F(b - 0)
+  $
+  причем
+  $
+    integral_a^b f(x) d x = F(b - 0) - F(a) quad "(ф. Ньютона-Лейбница)"
+  $
+]
+
+#property(title: "Аддитивность")[
+  $
+    integral_a^(+oo) f(x) d x = integral_a^c f(x) d x + integral_c^(+oo) f(x) d x
+  $
+]
+
+#theorem(title: "Признак сравнения")[
+  Пусть даны $f(x)$ и $g(x)$, непрерывные на $[a; b)$, причем $forall x in [a; b). space 0 <= f(x) <= g(x)$. Тогда:
+  1. Из сходимости $integral_a^b g(x) d x$ следует сходимость $integral_a^b f(x) d x$
+  2. Из расходимости $integral_a^b f(x) d x$ следует расходимость $integral_a^b g(x) d x$
+]
+
+#theorem(title: "Следствие")[
+  Если $forall x in [a; b)$ выполняются $f(x) > 0$ и $g(x) > 0$, а также $f(x) ~ g(x)$ при $x -> b-0$, то $integral_a^b f(x) d x$ и $integral_a^b g(x) d x$ сходятся или расходятся одновременно.
+]
+
+Полезные интегралы:
+
++ $display( integral_a^(+oo) A/(x^alpha) d x quad A != 0 )$
+  - сходится при $alpha > 1$
+  - расходится при $alpha <= 1$
+
++ $display( integral_2^(+oo) (d x)/(x^alpha ln^beta x) )$
+  - сходится при $alpha > 1$ или при $alpha = 1$ и $beta > 1$
+  - расходится при остальных значениях $alpha, beta$
+
++ $display( integral_0^(1/2) (d x)/(x^alpha abs(ln x)^beta) )$
+  - сходится при $alpha < 1$ или $alpha = 1$ и $beta > 1$
+  - расходится при остальных значениях $alpha, beta$
+
++ $display( integral_0^(+oo) (ln(e^x - x)) / (x^alpha) d x )$
+  - сходится при $2 < alpha < 3$
+  - расходится при остальных значениях $alpha$
+
++ $display( integral_0^(+oo) ln(1 + x^alpha)/sqrt(x + sqrt(x)) d x )$
+  - сходится при $alpha < -1/2$
+  - расходится при $alpha >= -1/2$
+
+#theorem(title: "Критерий коши сходимости несобственных интегралов")[
+  Для сходимости $integral_a^b f(x) d x$ (при $b != +oo$) необходимо и достаточно, чтобы выполнялось условие Коши:
+
+  $
+    forall epsilon > 0. quad exists delta(epsilon) in (a, b). quad forall xi_1, xi_2 in (delta(epsilon), b). quad xi_1 < xi_2 ==> abs( integral_(xi_1)^(xi_2) f(x) d x ) < epsilon
+  $
+]
+
+_Замечание_. Если условие Коши не выполняется, то $integral_a^b f(x) d x$ расходится.
+
