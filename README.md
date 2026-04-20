@@ -1,6 +1,6 @@
 # itmo-notes
 
-![](https://codeberg.org/arslee07/itmo-notes/badges/workflows/build-and-publish.yml/badge.svg)
+[![](https://codeberg.org/arslee07/itmo-notes/badges/workflows/build-and-publish.yml/badge.svg)](https://codeberg.org/arslee07/itmo-notes/actions/runs/latest)
 
 В данном репозитории собраны различные материалы, которые пишутся по ходу освоения образовательной программы "Информационные системы и технологии" университета ИТМО, первый поток.
 
@@ -20,6 +20,7 @@
 
 - [Теормин 1](https://itmo.arslee.me/dm-tm1.pdf)
 - [Теормин 2](https://itmo.arslee.me/dm-tm2.pdf)
+- [Теормин 3](https://itmo.arslee.me/dm-tm3.pdf)
 
 ### Линейная алгебра
 
