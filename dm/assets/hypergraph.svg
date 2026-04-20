@@ -1,0 +1,42 @@
+<svg width="140mm" height="85mm" version="1.1" viewBox="0 0 140 85" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(13.514 12.406)">
+  <path d="m6.6289 43.526c1.7788-6.6939 7.2262-7.3585 12.886-7.5182 4.0537-0.11439 12.483 0.56687 14.455 8.4322 2.1878 8.7271-3.3019 17.442-16.973 16.262-8.1619-0.70456-11.925-11.32-10.369-17.176z" fill="#ffbfee" stroke="#b20083" stroke-width=".5"/>
+  <g transform="translate(-40.113 -45.642)" stroke-width=".26458">
+   <text x="56.956108" y="96.551147" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" xml:space="preserve"><tspan x="56.956108" y="96.551147" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" stroke-width=".26458"><tspan font-family="'Liberation Serif'" font-style="italic">v</tspan><tspan baseline-shift="sub" font-size="65%">4</tspan></tspan></text>
+   <circle cx="55.61" cy="97.309" r="1.5"/>
+  </g>
+  <g transform="translate(57.559 -36.15)" stroke-width=".26458">
+   <text x="56.956108" y="96.551147" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" xml:space="preserve"><tspan x="56.956108" y="96.551147" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" stroke-width=".26458"><tspan font-family="'Liberation Serif'" font-style="italic">v</tspan><tspan baseline-shift="sub" font-size="65%">7</tspan></tspan></text>
+   <circle cx="55.61" cy="97.309" r="1.5"/>
+  </g>
+  <path d="m-12.783 13.911c2.782-9.2954 15.396-11.341 22.266-15.415 11.719-6.9489 22.223-11.508 40.858-10.517 19.02 1.0112 65.091 8.3149 67.048 19.815 1.9575 11.5 1.6041 21.325-14.192 20.064-23.046-1.8401-28.387-12.183-58.235-9.7874-17.953 1.4409-26.241 10.724-39.884 10.277-10.861-0.356-20.67-5.0558-17.862-14.436z" fill="#fff380" stroke="#b2b200" stroke-width=".5"/>
+  <g transform="translate(-96.441 -38.207)" stroke-width=".26458">
+   <text x="94.831078" y="57.568928" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" xml:space="preserve"><tspan x="94.831078" y="57.568928" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" stroke-width=".26458"><tspan font-family="'Liberation Serif'" font-style="italic">v</tspan><tspan baseline-shift="sub" font-size="65%">1</tspan></tspan></text>
+   <circle cx="93.331" cy="57.569" r="1.5"/>
+  </g>
+  <g font-family="'Liberation Serif'" font-size="8.4667px" stroke-width=".26458">
+   <text x="-7.1923194" y="0.69478476" fill="#a99900" xml:space="preserve"><tspan x="-7.1923194" y="0.69478476" fill="#a99900" font-family="'Liberation Serif'" font-size="8.4667px" font-style="italic" stroke-width=".26458">e<tspan baseline-shift="sub" font-size="65%">1</tspan></tspan></text>
+   <text x="65.498543" y="-3.1202259" fill="#a90000" xml:space="preserve"><tspan x="65.498543" y="-3.1202259" fill="#a90000" font-family="'Liberation Serif'" font-size="8.4667px" font-style="italic" stroke-width=".26458">e<tspan baseline-shift="sub" font-size="65%">2</tspan></tspan></text>
+   <text x="50.855286" y="39.898594" fill="#068000" xml:space="preserve"><tspan x="50.855286" y="39.898594" fill="#068000" font-family="'Liberation Serif'" font-size="8.4667px" font-style="italic" stroke-width=".26458">e<tspan baseline-shift="sub" fill="#068000" font-size="65%">3</tspan></tspan></text>
+   <text x="0.86075288" y="57.831535" fill="#b20083" xml:space="preserve"><tspan x="0.86075288" y="57.831535" fill="#b20083" font-family="'Liberation Serif'" font-size="8.4667px" font-style="italic" stroke-width=".26458">e<tspan baseline-shift="sub" fill="#b20083" font-size="65%">4</tspan></tspan></text>
+  </g>
+  <path d="m92.695 11.012s5.1196-6.6253 9.3357-6.3242c4.2161 0.30115 12.046 1.8069 11.745 6.3242-0.30115 4.5173-14.141 19.507-16.851 27.653-1.3389 4.0249-8.6981 19.577-13.906 26.33-6.4718 8.3916-10.511 2.6742-19.365 1.4413-6.1345-0.85431-11.12-8.481-10.41-15.672 0.76178-7.7166 14.292-17.769 18.986-21.368 4.6944-3.5989 8.1174-14.168 12.334-15.975 4.2161-1.8069 8.1311-2.4092 8.1311-2.4092z" fill="#90ff80" fill-opacity=".7" stroke="#18b200" stroke-width=".5"/>
+  <path d="m37.622 13.421c-3.5654-1.1125-10.019-4.458-8.3193-11.256 0.73406-2.9362 6.1171-7.3406 12.724-6.6065 6.6065 0.73406 28.185 4.7731 33.522 5.3831 8.564 0.97874 37.926-0.48937 39.394 8.564 1.2142 7.4874-2.8717 17.6-12.968 14.681-16.82-4.8628-22.756-10.766-34.99-11.745-7.8657-0.62926-24.61 2.4615-29.362 0.97874z" fill="#ff8080" fill-opacity=".76134" stroke="#b20000" stroke-width=".5"/>
+  <g transform="translate(-71.193 -73.687)" stroke-width=".26458">
+   <text x="112.33781" y="78.116249" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" xml:space="preserve"><tspan x="112.33781" y="78.116249" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" stroke-width=".26458"><tspan font-family="'Liberation Serif'" font-style="italic">v</tspan><tspan baseline-shift="sub" font-size="65%">2</tspan></tspan></text>
+   <circle cx="110.99" cy="78.874" r="1.5"/>
+  </g>
+  <g transform="translate(-20.571 -49.413)" stroke-width=".26458">
+   <text x="86.420624" y="105.46234" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" xml:space="preserve"><tspan x="86.420624" y="105.46234" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" stroke-width=".26458"><tspan font-family="'Liberation Serif'" font-style="italic">v</tspan><tspan baseline-shift="sub" font-size="65%">5</tspan></tspan></text>
+   <circle cx="85.075" cy="106.29" r="1.5"/>
+  </g>
+  <g transform="translate(-36.368 -78.432)" stroke-width=".26458">
+   <text x="114.87347" y="120.58826" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" xml:space="preserve"><tspan x="114.87347" y="120.58826" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" stroke-width=".26458"><tspan font-family="'Liberation Serif'" font-style="italic">v</tspan><tspan baseline-shift="sub" font-size="65%">6</tspan></tspan></text>
+   <circle cx="113.37" cy="120.59" r="1.5"/>
+  </g>
+  <g transform="translate(-78.359 -125.07)" stroke-width=".26458">
+   <text x="178.00497" y="139.86046" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" xml:space="preserve"><tspan x="178.00497" y="139.86046" fill="#000000" font-family="'Liberation Serif'" font-size="11.289px" stroke-width=".26458"><tspan font-family="'Liberation Serif'" font-style="italic">v</tspan><tspan baseline-shift="sub" font-size="65%">3</tspan></tspan></text>
+   <circle cx="176.66" cy="140.69" r="1.5"/>
+  </g>
+ </g>
+</svg>
