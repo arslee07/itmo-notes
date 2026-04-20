@@ -92,10 +92,6 @@ details summary {
   cursor: pointer;
 }
 
-span[role='math'] {
-  display: inline-block;
-}
-
 figure[role='math'] {
   display: block;
   margin: 0;
@@ -230,8 +226,8 @@ figure[role='math'] {
   )
 
   if target() == "html" {
-    show math.equation.where(block: false): it => {
-      html.elem("span", attrs: (role: "math"), html.frame(it))
+    show math.equation.where(block: false): (it) => {
+      box(html.frame(it))
     }
 
     html.head([
