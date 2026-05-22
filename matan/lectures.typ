@@ -2,7 +2,7 @@
 #show: template.with([Математический анализ --- II. Лекции])
 
 #let replacement(..items) = $mat(delim: "[", align: #left, ..items)$
-#let evaluated(expr, size: 100%) = $lr(#expr|, size: #size)$
+#let eval = $lr(|, size: #24pt)$
 
 = Лекция 1 (10.02.2026)
 
@@ -581,7 +581,7 @@ $
   Если $f$ непрерывна на $[a; b]$ и $Phi(x)$ --- ее любая первообразная, то:
 
   $
-    integral_a^b f(x) d x = evaluated(Phi(x))_a^b = Phi(b) - Phi(a)
+    integral_a^b f(x) d x = Phi(x) eval_a^b = Phi(b) - Phi(a)
   $
 ]
 
@@ -622,14 +622,14 @@ $
   Если $u(x)$ и $v(x)$ дифференцируемы на $[a; b]$, то:
 
   $
-    integral_a^b u d v = evaluated(u v)_b^a - integral_a^b v d u
+    integral_a^b u d v = u v eval_b^a - integral_a^b v d u
   $
 ]
 
 #example[
   $
     &integral_0^1 x sqrt(1 - x^2) d x = replacement(x = sin t; d x = cos t d t; 0 = sin t"," t = 0; 1 = sin t"," t = pi/2) \
-    &wide = integral_0^(pi/2) sin t space sqrt(1 - sin^2 t) cos t space d t = integral_0^(pi/2) cos^2 t space sin t space d t = - integral_0^(pi/2) cos^2 t space d cos t = evaluated(-(cos^3 t)/3)_0^(pi/2) = 1/3
+    &wide = integral_0^(pi/2) sin t space sqrt(1 - sin^2 t) cos t space d t = integral_0^(pi/2) cos^2 t space sin t space d t = - integral_0^(pi/2) cos^2 t space d cos t = -(cos^3 t)/3 eval_0^(pi/2) = 1/3
   $
 ]
 
@@ -685,13 +685,13 @@ $
   Исследовать интеграл $integral_1^(+oo) (d x)/(x^alpha)$ на сходимость.
 
   $
-    integral_1^(+oo) (d x)/(x^alpha) = lim_(x->+oo) integral_1^xi (d x)/(x^alpha) = lim_(xi->+oo) (evaluated(x^(1 - alpha)/(1 - alpha))_1^xi) = lim_(xi->+oo) (xi^(1-alpha)/(1 - alpha) - 1/(1 - alpha)) = cases(1 / (alpha - 1) quad alpha > 1, +oo quad alpha < 1)
+    integral_1^(+oo) (d x)/(x^alpha) = lim_(x->+oo) integral_1^xi (d x)/(x^alpha) = lim_(xi->+oo) (x^(1 - alpha)/(1 - alpha) eval_1^xi) = lim_(xi->+oo) (xi^(1-alpha)/(1 - alpha) - 1/(1 - alpha)) = cases(1 / (alpha - 1) quad alpha > 1, +oo quad alpha < 1)
   $
 
   Рассмотрим случай $alpha = 1$.
 
   $
-    integral_1^(+oo) (d x)/x = lim_(xi->+oo) integral_1(xi) (d x)/x = lim_(xi -> +oo) (evaluated(ln x)_1^xi) = lim_(xi->+oo) ln xi = +oo
+    integral_1^(+oo) (d x)/x = lim_(xi->+oo) integral_1(xi) (d x)/x = lim_(xi -> +oo) (ln x eval_1^xi) = lim_(xi->+oo) ln xi = +oo
   $
 
   То есть, данный интеграл сходится при $alpha > 1$ и расходится при $alpha <= 1$.
@@ -707,7 +707,7 @@ $
   Рассмотрим случай $alpha = 1$.
 
   $
-    integral_0^1 (d x)/(x^alpha) = lim_(epsilon -> 0) integral_epsilon^1 (d x)/x = lim_(epsilon -> 0) (evaluated(ln x)_epsilon^1) = lim_(epsilon -> 0) (ln 1 - ln epsilon) = +oo
+    integral_0^1 (d x)/(x^alpha) = lim_(epsilon -> 0) integral_epsilon^1 (d x)/x = lim_(epsilon -> 0) (ln x eval_epsilon^1) = lim_(epsilon -> 0) (ln 1 - ln epsilon) = +oo
   $
 
   То есть, данный интеграл сходится при $alpha >= 1$ и расходится при $alpha < 1$.
@@ -789,3 +789,228 @@ $
 
 _Замечание_. Если условие Коши не выполняется, то $integral_a^b f(x) d x$ расходится.
 
+= Лекция ??? (19.05.2026)
+
+== Разложение в ряд Фурье функций произвольного периода
+
+$ f(x), quad T = 2 pi, quad [-pi, pi] $
+
+
+1. $display(S(x) = f(x))$
+
+   $display(S(x) = a_0 / 2 + sum_(n=1)^(oo) (a_n cos(n x) + b_n sin(n x))) $
+
+   $display(a_0 = 1/pi integral_(-pi)^(pi) f(x) dif x) $
+
+   $display(a_n = 1/pi integral_(-pi)^(pi) f(x) cos(n x) dif x) $
+
+   $display(b_n = 1/pi integral_(-pi)^(pi) f(x) sin(n x) dif x) $
+
+2. $S(x) = 1/2 (f(x_0 - 0) + f(x_0 + 0))$, где $x_0$ — точка разрыва $1$-го рода.
+
+3. $S(x) = 1/2 (f(-pi + 0) + f(pi - 0))$
+
+Пусть $f(x)$ определена на $[-l; l]$ и $T = 2l$, т.е. $f(x+2l) = f(x)$, где $l > 0$ --- произвольное число. Функция $f(x)$ на $[-l; l]$ удовлетворяет условиям Дирихле.
+
+Подстановка:
+
+$ T = 2pi quad &==> quad T = 2l \
+  y = (x pi)/l quad &==> quad x = (y l)/pi \
+  y in [-pi; pi] quad &==> quad x in [-l; l] \
+  phi(y) &==> f((y l)/pi) quad "при" space -pi <= y <= pi, quad -l <= x <= l $
+
+$ phi(y) : quad phi(y + 2pi) = f(l/pi (y + 2pi)) = f((y l)/pi + 2l) = f((y l)/pi) = phi(y). $
+
+Тогда ряд Фурье для $phi(y)$ на $[-l; l]$:
+
+$ phi(y) &= a_0 / 2 + sum_(n=1)^(oo) ( a_n cos(n y) + b_n sin(n y) ) \
+         &= replacement(y = (x pi)/l) = a_0 / 2 + sum_(n=1)^(oo) ( a_n cos((n pi)/l x) + b_n sin((n pi)/l x) ), $
+
+т.е. $f(x)$ на $[-l; l]$ при $T = 2l$:
+
+$ f(x) = a_0 / 2 + sum_(n=1)^(oo) ( a_n cos((n pi)/l x) + b_n sin((n pi)/l x) ), $
+
+где коэффициенты определяются как:
+
+$
+a_n &= 1/pi integral_(-pi)^(pi) phi(y) cos(n y) dif y \
+    &= replacement(y = (pi x)/l space, dif y = pi/l dif x space, y in [-pi; pi]; x = (y l)/pi, x in [-l; l]) = \
+    &= 1/pi integral_(-l)^(l) phi((pi x)/l) cos((n pi x)/l) dot pi/l dif x = \
+    &= 1/pi dot pi/l integral_(-l)^(l) f(x) cos((n pi x)/l) dif x \
+    &= 1/l integral_(-l)^(l) f(x) cos((n pi x)/l) dif x, wide n = 0, 1, 2, ...
+$
+
+$ \
+  b_n = 1/l integral_(-l)^(l) f(x) sin((n pi)/l x) dif x, wide n = 1, 2, 3 ...
+$
+
+Можно показать, что тригонометрическая система функций
+$ lr({ 1, cos((k pi x)/l), sin((k pi x)/l) })_(k=1)^(+oo) $
+ортогональна на $[-l; l]$, то есть любую интегрируемую функцию $f(x)$ можно представить тригонометрическим рядом Фурье.
+
+Разложение функции в тригонометрический ряд Фурье с последующим анализом каждой гармоники называется _гармоническим анализом_.
+
+#theorem(title: "Дирихле")[
+  Пусть функция $f(x)$ определена и кусочно-непрерывна на $[-l; l]$. Тогда тригонометрический ряд Фурье этой функции сходится в каждой точке $x in [-l; l]$, и для суммы $S(x)$ верны равенства:
+
+  1. $S(x) = f(x) space$ во всех точках непрерывности $f(x)$, где $x in (-l; l)$.
+
+  2. $S(x_k) = 1/2 (f(x_k - 0) + f(x_k + 0)), space$ где $x_k$ --- точка разрыва $1$-го рода, $x_k in (-l; l)$.
+
+  3. $S(-l) = S(l) = 1/2 (f(-l + 0) + f(l - 0))$.
+]
+
+_Замечание._ Если функция $f(x)$ определена на $RR$, является периодической с периодом $T = 2l$ и всюду кусочно-непрерывна, тогда тригонометрический ряд Фурье сходится везде, и для его суммы выполняются равенства:
+1. $S(x_k) = f(x_k)$, если $x_k$ — точка непрерывности, $x_k in RR$.
+2. $S(x_k) = 1/2 (f(x_k - 0) + f(x_k + 0))$, если $x_k$ --- точка разрыва функции $f(x)$, $x_k in RR$.
+
+== Ряд Фурье для четных и нечетных функций
+
+Если на $[-pi; pi]$ (или $[-l; l]$) разлагаемая в ряд Фурье функция $f(x)$ является четной или нечетной, то ряд Фурье этих функци неполный:
+
+- Если $f(x)$ --- _четная_, то $b_n = 0$ (разложение по косинусам):
+
+  $
+    a_n = 1/pi integral_(0)^(pi) f(x) cos(n x) dif x,
+    wide
+    ( a_n = 1/l integral_(0)^(l) f(x) cos((n pi)/l x) dif x )
+  $
+
+  $ S(x) = a_0 / 2 + sum_(n=1)^(oo) a_n cos(n x)
+    wide
+    ( S(x) = a_0 / 2 + sum_(n=1)^(oo) a_n cos((n pi)/l x) )
+  $
+
+- Если $f(x)$ --- _нечетная_, то $a_n = 0$ (разложение по синусам):
+
+  $
+    b_n = 1/pi integral_(0)^(pi) f(x) sin(n x) dif x
+    wide
+    ( b_n = 1/l integral_(0)^(l) f(x) sin((n pi)/l x) dif x ) $
+
+  $
+    S(x) = sum_(n=1)^(oo) b_n sin(n x)
+    wide
+    ( S(x) = sum_(n=1)^(oo) b_n sin((n pi)/l x) )
+  $
+
+== Примеры. Разложение функции в ряд Фурье
+
+=== Пример 1
+
+$ f(x) = x, quad [-pi; pi] $
+
+#figure(
+  image("assets/fourier-ex1.png", width: 75%)
+)
+
+По теореме Дирихле:
+$
+  S(-pi) = S(pi) = 1/2 ( f(-pi + 0) + f(pi - 0) ) = 0
+$
+
+Так как $f(x) = x$ на $[-pi; pi]$ --- нечетная функция, ряд Фурье неполный и разложение только по синусам:
+
+
+$
+  b_n &= 1/pi integral_(-pi)^(pi) x sin(n x) dif x \
+      &= replacement(u = x, dif u = dif x; dif v = sin(n x) dif x space, v = -1/n cos(n x) ) \
+      &= 1/pi ( -x/n cos(n x) eval_(-pi)^(pi) + 1/n integral_(-pi)^(pi) cos(n x) dif x ) \
+      &= -1/(pi n) ( pi cos(n pi) + pi cos(n pi) + 1/n^2 sin(n x) eval_(-pi)^(pi) ) \
+      &= -(2pi)/(pi n) (-1)^n \
+      &= (2(-1)^(n+1))/n
+$
+
+Итак,
+
+$
+  f(x) = sum_(n=1)^(oo) (2(-1)^(n+1))/n sin(n x) = 2 sum_(n=1)^(oo) ((-1)^(n+1))/n sin(n x)
+$
+
+=== Пример 2
+
+
+$ f(x) = x^2, quad [-pi; pi] $
+
+#figure(
+  image("assets/fourier-ex2.png", width: 60%)
+)
+
+$f(x) = x^2$ --- четная функция на $[-pi; pi]$
+
+$
+  S(-pi) = S(pi) = 1/2 ( f(-pi + 0) + f(pi - 0) ) = pi^2
+$
+
+Ряд Фурье неполный, разложение по косинусам ($b_n = 0$).
+
+$
+a_n &= 1/pi integral_(-pi)^(pi) x^2 cos(n x) dif x \
+    &= replacement(x^2 = u, dif u = 2x dif x; dif v = cos(n x) dif x space, v = 1/n sin(n x) ) \
+    &= 1/pi ( (x^2)/n sin(n x) eval_(-pi)^(pi) - 2/n integral_(-pi)^(pi) x sin(n x) dif x ) \
+    &= 1/pi ( (pi^2)/n sin(n pi) + (pi^2)/n sin(n pi) ) - 2/n ( (2(-1)^(n+1))/n ) \
+    &= (-4(-1)^(n+1))/n^2 \
+    &= ((-1)^n dot 4)/n^2
+$
+
+$ \
+  a_0 = 1/pi integral_(-pi)^(pi) x^2 dif x = 1/pi dot (x^3)/3 eval_(-pi)^(pi) = 1/(3pi) ( pi^3 - (-pi)^3 ) = (2pi^3)/(3pi) = (2pi^2)/3
+$
+
+Итак,
+
+$
+  f(x) = pi^2 / 3 + sum_(n=1)^(oo) ((-1)^n dot 4)/n^2 cos(n x)
+$
+
+=== Пример 3
+
+$ f(x) = cases(1"," quad -1 < x < 0, x"," quad 0 <= x < 1) $
+
+$
+  (-1; 1), quad l = 1, quad T = 2
+$
+
+#figure(
+  image("assets/fourier-ex3.png", width: 60%)
+)
+
+$f(x)$ --- функция общего вида на $(-1; 1)$.
+
+$
+  a_0 = integral_(-1)^(0) 1 dif x + integral_(0)^(1) x dif x = x eval_(-1)^(0) + (x^2)/2 eval_0^1 = 1 + 1/2 = 3/2
+$
+
+$ a_n &= integral_(-1)^(0) cos(n pi x) dif x + integral_(0)^(1) x cos(n pi x) dif x \
+      &= 1/(n pi) sin(n pi x) eval_(-1)^(0) + x/(n pi) sin(n pi x) eval_(0)^(1) - 1/(n pi) integral_(0)^(1) sin(n pi x) dif x = \
+      &= 1/((n pi)^2) cos(n pi x) eval_(0)^(1) \
+      &= 1/(n^2 pi^2) (cos(n pi) - cos(0)) \
+      &= 1/(n^2 pi^2) ( (-1)^n - 1 ) \
+      &= cases(0 quad &n = 2k, display(-2/(n^2 pi^2)) quad &n = 2k - 1) wide k = 1, 2, dots $
+
+$
+b_n &= integral_(-1)^(0) sin(n pi x) dif x + integral_(0)^(1) x sin(n pi x) dif x = \
+    &= -1/(n pi) cos(n pi x) eval _(-1)^(0) + ( -x/(n pi) cos(n pi x) eval _(0)^(1) + 1/(n pi) integral_(0)^(1) cos(n pi x) dif x ) = \
+    &= 1/(n pi) (1 - (-1)^n) + ( -1/(n pi) (-1)^n - 0 + 1/(n^2 pi^2) sin(n pi x) eval _(0)^(1) ) = \
+    &= 1/(n pi) - ((-1)^n)/(n pi) - ((-1)^n)/(n pi) \
+    &= 1/(n pi) quad "(проверить!!!)" $
+
+Значения суммы ряда $S(x)$ в характерных точках:
+- При $x = 0$ (точка разрыва):
+  $ S(0) = 1/2 ( f(0 - 0) + f(0 + 0) ) = 1/2 (1 + 0) = 1/2 $
+
+- При $x = plus.minus 1$ (границы интервала):
+  $ S(-1) = S(1) = 1/2 ( f(-1 + 0) + f(1 - 0) ) = 1/2 (1 + 1) = 1 $
+
+Итак,
+
+$
+  f(x) = 3/4 - 2/pi^2 sum_(n=1)^(oo) (cos((2n-1)pi x))/( (2n-1)^2 ) + 1/pi sum_(n=1)^(oo) (sin(n pi x))/n
+$
+
+При этом:
+
+$
+  S(0) = S(0 + n T) = replacement(T = 2) = 1/2 \
+  S(-1) = S(1) = S(-1 + n T) = S(1 + n T) = 1
+$
