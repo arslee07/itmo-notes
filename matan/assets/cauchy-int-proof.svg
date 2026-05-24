@@ -1,0 +1,54 @@
+<svg width="115.18mm" height="113.68mm" version="1.1" viewBox="0 0 115.18 113.68" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <marker id="DartArrow" overflow="visible" markerHeight="1" markerWidth="1" orient="auto-start-reverse" preserveAspectRatio="xMidYMid" viewBox="0 0 1 1">
+   <path transform="scale(-.5)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd"/>
+  </marker>
+  <marker id="DartArrow-7" overflow="visible" markerHeight="1" markerWidth="1" orient="auto-start-reverse" preserveAspectRatio="xMidYMid" viewBox="0 0 1 1">
+   <path transform="scale(-.5)" d="m0 0 5-5-17.5 5 17.5 5z" fill="context-stroke" fill-rule="evenodd"/>
+  </marker>
+ </defs>
+ <g transform="translate(1.4645 .8184)">
+  <path d="m10.845 102.24v-93.546" fill="#1a1a1a" fill-opacity=".25166" marker-end="url(#DartArrow)" stroke="#000"/>
+  <path d="m8.3045 99.695h93.546" fill="#1a1a1a" fill-opacity=".25166" marker-end="url(#DartArrow-7)" stroke="#000"/>
+  <g fill="#b3b3b3" fill-opacity=".25166" stroke="#c0c0c0">
+   <path d="m26.374 48.247 16.223-0.01991" stroke-dasharray="1.39365, 0.696827" stroke-width=".69683"/>
+   <path d="m42.577 47.728 0.01982 20.995" stroke-dasharray="1.4, 0.7" stroke-width=".7"/>
+   <path d="m42.097 68.221 16.373-0.01991" stroke-dasharray="1.4, 0.7" stroke-width=".7"/>
+   <path d="m58.385 67.704 0.01993 13.745" stroke-dasharray="1.39294, 0.696469" stroke-width=".69647"/>
+   <g stroke-dasharray="1.4, 0.7" stroke-width=".7">
+    <path d="m58.044 81.107 16.373-0.01991"/>
+    <path d="m74.332 80.738 0.01994 8.6778"/>
+    <path d="m73.908 89.435 16.373-0.01991"/>
+   </g>
+   <path d="m90.196 89.069 0.02019 4.6762" stroke-dasharray="1.39999, 0.7" stroke-width=".7"/>
+  </g>
+  <g fill="#1a1a1a" fill-opacity=".25166" stroke="#404040">
+   <g stroke-width=".7">
+    <path d="m26.723 47.727v54.514"/>
+    <path d="m42.597 67.701v34.541"/>
+    <path d="m26.723 68.221 16.373-0.01991"/>
+   </g>
+   <path d="m42.597 81.102 16.158-0.0199" stroke-width=".69547"/>
+   <path d="m58.47 89.436 16.223-0.0199" stroke-width=".69684"/>
+   <path d="m74.343 93.759 16.223-0.0199" stroke-width=".69684"/>
+   <g stroke-width=".7">
+    <path d="m58.47 80.582v21.66"/>
+    <path d="m74.343 88.923v13.318"/>
+    <path d="m90.217 93.247v8.9948"/>
+   </g>
+  </g>
+  <path d="m15.185 11.28c0.55036 38.782 42.911 82.043 82.565 82.565" fill="none" stroke="#000268" stroke-width=".7"/>
+  <text x="25.174124" y="118.94818" fill="none" fill-opacity=".25166" font-family="'Adwaita Sans'" font-size="8.4667px" font-style="italic" stroke="#000000" xml:space="preserve"><tspan x="25.174124" y="118.94818"/></text>
+  <g fill="#000000" font-family="'Libertinus Serif'" font-size="8.4667px">
+   <g stroke-width="0" text-anchor="middle">
+    <text x="26.706358" y="109.50034" text-align="center" xml:space="preserve"><tspan x="26.706358" y="109.50034" fill="#000000" font-family="'Libertinus Serif'" stroke-width="0">1</tspan></text>
+    <text x="42.600838" y="109.51727" text-align="center" xml:space="preserve"><tspan x="42.600838" y="109.51727" fill="#000000" font-family="'Libertinus Serif'" stroke-width="0">2</tspan></text>
+    <text x="58.503788" y="109.51727" text-align="center" xml:space="preserve"><tspan x="58.503788" y="109.51727" fill="#000000" font-family="'Libertinus Serif'" stroke-width="0">3</tspan></text>
+    <text x="90.483276" y="109.51727" text-align="center" xml:space="preserve"><tspan x="90.483276" y="109.51727" fill="#000000" font-family="'Libertinus Serif'" stroke-width="0">n+1</tspan></text>
+    <text x="74.343246" y="107.34134" text-align="center" xml:space="preserve"><tspan x="74.343246" y="107.34134" fill="#000000" font-family="'Libertinus Serif'" stroke-width="0">...</tspan></text>
+   </g>
+   <text x="4.0438609" y="6.0889611" stroke-dasharray="1.39999, 0.7" stroke-width=".7" xml:space="preserve"><tspan x="4.0438609" y="6.0889611" fill="#000000" stroke-width=".7">y</tspan></text>
+   <text x="104.08739" y="105.84463" stroke-dasharray="1.39999, 0.7" stroke-width=".7" xml:space="preserve"><tspan x="104.08739" y="105.84463" fill="#000000" stroke-width=".7">x</tspan></text>
+  </g>
+ </g>
+</svg>
