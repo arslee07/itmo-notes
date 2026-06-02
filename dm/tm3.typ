@@ -2,7 +2,7 @@
 #import "@preview/finite:0.5.1" as finite: automaton, transition-table
 
 #import "../template.typ": *
-#show: template.with([Дискретная математика. Теормин --- II])
+#show: template.with([Дискретная математика. Теормин --- III])
 
 = Графы <graphs>
 
