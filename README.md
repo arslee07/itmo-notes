@@ -21,6 +21,7 @@
 - [Теормин 1](https://itmo.arslee.me/dm-tm1.pdf)
 - [Теормин 2](https://itmo.arslee.me/dm-tm2.pdf)
 - [Теормин 3](https://itmo.arslee.me/dm-tm3.pdf)
+- [Теормин 3](https://itmo.arslee.me/dm-tm4.pdf)
 
 ### Линейная алгебра
 
