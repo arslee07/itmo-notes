@@ -114,51 +114,49 @@ $
 На примере карты Карно:
 
 #figure[
-    #render[
-    #scale(100%, reflow: true)[
-      #cetz.canvas({
-        import cetz.draw: rect, content, line, grid
+  #scale(100%, reflow: true)[
+    #cetz.canvas({
+      import cetz.draw: rect, content, line, grid
 
-        // upper header
-        content((0.5, 2.5), [00], anchor: "north")
-        content((1.5, 2.5), [01], anchor: "north")
-        content((2.5, 2.5), [11], anchor: "north")
-        content((3.5, 2.5), [10], anchor: "north")
+      // upper header
+      content((0.5, 2.5), [00], anchor: "north")
+      content((1.5, 2.5), [01], anchor: "north")
+      content((2.5, 2.5), [11], anchor: "north")
+      content((3.5, 2.5), [10], anchor: "north")
 
-        // left header
-        content((-0.25, 1.5), [0], anchor: "east")
-        content((-0.25, 0.5), [1], anchor: "east")
+      // left header
+      content((-0.25, 1.5), [0], anchor: "east")
+      content((-0.25, 0.5), [1], anchor: "east")
 
-        // lines
-        line((1.0, 3.0), (3.0, 3.0), stroke: 1.2pt)
-        content((2.0, 3.3), [C], anchor: "south")
-        line((2.0, 2.7), (4.0, 2.7), stroke: 1.2pt)
-        content((3.5, 3.0), [B], anchor: "south")
-        line((-0.75, 0.0), (-0.75, 1.0), stroke: 1.2pt)
-        content((-1.0, 0.5), std.rotate(-90deg)[A], anchor: "east")
+      // lines
+      line((1.0, 3.0), (3.0, 3.0), stroke: 1.2pt)
+      content((2.0, 3.3), [C], anchor: "south")
+      line((2.0, 2.7), (4.0, 2.7), stroke: 1.2pt)
+      content((3.5, 3.0), [B], anchor: "south")
+      line((-0.75, 0.0), (-0.75, 1.0), stroke: 1.2pt)
+      content((-1.0, 0.5), std.rotate(-90deg)[A], anchor: "east")
 
-        grid(
-          (0, 0),
-          (4, 2),
-          stroke: 0.4pt,
-        )
+      grid(
+        (0, 0),
+        (4, 2),
+        stroke: 0.4pt,
+      )
 
-        rect((0.1, 1.1), (1.9, 1.9), stroke: red)
-        rect((1.2, 0.2), (1.8, 1.8), stroke: green)
-        rect((1.1, 0.1), (2.9, 0.9), stroke: blue)
-        rect((2.2, 0.2), (2.8, 0.8), stroke: yellow)
+      rect((0.1, 1.1), (1.9, 1.9), stroke: red)
+      rect((1.2, 0.2), (1.8, 1.8), stroke: green)
+      rect((1.1, 0.1), (2.9, 0.9), stroke: blue)
+      rect((2.2, 0.2), (2.8, 0.8), stroke: yellow)
 
-        let def = (anchor: "mid")
-        content((1.5, 0.5), [1], ..def)
-        content((3.5, 0.5), [0], ..def)
-        content((0.5, 1.5), [1], ..def)
-        content((1.5, 1.5), [1], ..def)
-        content((2.5, 1.5), [0], ..def)
-        content((3.5, 1.5), [0], ..def)
-        content((0.5, 0.5), [0], ..def)
-        content((2.5, 0.5), [1], ..def)
-      })
-    ]
+      let def = (anchor: "mid")
+      content((1.5, 0.5), [1], ..def)
+      content((3.5, 0.5), [0], ..def)
+      content((0.5, 1.5), [1], ..def)
+      content((1.5, 1.5), [1], ..def)
+      content((2.5, 1.5), [0], ..def)
+      content((3.5, 1.5), [0], ..def)
+      content((0.5, 0.5), [0], ..def)
+      content((2.5, 0.5), [1], ..def)
+    })
   ]
 ]
 

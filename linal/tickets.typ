@@ -562,41 +562,37 @@
 ]
 
 #proof[
-  #figure[
-    #render[
-      #grid(
-        columns: 3,
-        align: center + horizon,
-        column-gutter: 2em,
-        $
-          e^(i phi) + e^(-i phi)
-          &= (cos phi + i sin phi) + (cos (-phi) + i sin (-phi)) \
-          &= cos phi + i sin phi + cos phi - i sin phi \
-          &= 2 cos phi \
-        $,
-        $==>$,
-        $cos phi = (e^(i phi) + e^(-i phi)) / 2$
-      )
-    ]
-  ]
+  #figure(
+    grid(
+      columns: 3,
+      align: center + horizon,
+      column-gutter: 2em,
+      $
+        e^(i phi) + e^(-i phi)
+        &= (cos phi + i sin phi) + (cos (-phi) + i sin (-phi)) \
+        &= cos phi + i sin phi + cos phi - i sin phi \
+        &= 2 cos phi \
+      $,
+      $==>$,
+      $cos phi = (e^(i phi) + e^(-i phi)) / 2$
+    )
+  )
 
-  #figure[
-    #render[
-      #grid(
-        columns: 3,
-        align: center + horizon,
-        column-gutter: 2em,
-        $
-          e^(i phi) - e^(-i phi)
-          &= (cos phi + i sin phi) - (cos (-phi) + i sin (-phi)) \
-          &= cos phi + i sin phi - cos phi + i sin phi \
-          &= 2 i sin phi \
-        $,
-        $==>$,
-        $sin phi = (e^(i phi) - e^(-i phi)) / (2 i)$
-      )
-    ]
-  ]
+  #figure(
+    grid(
+      columns: 3,
+      align: center + horizon,
+      column-gutter: 2em,
+      $
+        e^(i phi) - e^(-i phi)
+        &= (cos phi + i sin phi) - (cos (-phi) + i sin (-phi)) \
+        &= cos phi + i sin phi - cos phi + i sin phi \
+        &= 2 i sin phi \
+      $,
+      $==>$,
+      $sin phi = (e^(i phi) - e^(-i phi)) / (2 i)$
+    )
+  )
 ]
 
 = Коммутативные кольца. Кольцо многочленов над $CC$ и $RR$.

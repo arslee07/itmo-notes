@@ -1,134 +1,13 @@
-#let css-stylesheet = "
-@import url('https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-
-body {
-  font-family: 'Libertinus Serif', serif;
-  font-size: 12pt;
-  line-height: 1.4;
-  padding: 1rem;
-  max-width: 48em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-code {
-  font-family: monospace;
-  font-size: 9pt;
-}
-
-pre {
-  overflow-x: auto;
-  border: 1pt #ccc solid;
-  border-radius: 4pt;
-  padding: 1em;
-}
-
-li ul, li ol {
-  padding-left: 1em;
-}
-
-a {
-  text-decoration: none;
-}
-
-ul, ol {
-  padding-left: 1em;
-}
-
-figure {
-  overflow-x: auto;
-  margin: 0;
-  text-align: center;
-}
-
-nav[role='doc-toc'] ol {
-  padding-left: 0;
-}
-
-nav[role='doc-toc'] li ol {
-  padding-left: 1em;
-}
-
-.thm-box {
-  padding-left: 1em;
-  padding-right: 1em;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  border: black 1pt solid;
-  border-radius: 4pt;
-}
-
-.definition {
-  border-color: #239930;
-}
-
-.theorem {
-  border-color: #be3129;
-}
-
-.property {
-  border-color: #0057a3;
-}
-
-.definition-title {
-  color: #239930;
-}
-
-.theorem-title {
-  color: #be3129;
-}
-
-.property-title {
-  color: #0057a3;
-}
-
-details {
-  border: 1pt #ccc solid;
-  border-radius: 4pt;
-  padding: 1em;
-}
-
-details summary {
-  cursor: pointer;
-}
-
-figure[role='math'] {
-  display: block;
-  margin: 0;
-  overflow-x: auto;
-  text-align: center;
-}
-"
-
-#let target() = {
-  if "target" in dictionary(std) { std.target() }
-  else { "paged" }
-}
-
-#let thm-box(color, name, title, body, html-class) = context [
-  #if target() == "html" {
-    html.elem("div", attrs: (class: "thm-box " + html-class))[
-      #par[
-        #html.elem("span", attrs: (class: html-class + "-title"))[
-          #if title == none [
-            #text[*#name. *]
-          ] else [
-            #text[*#name (#title). *]
-          ]
-        ] #body
+#let thm-box(color, name, title, body) = context [
+  #block(stroke: 0.5pt + color, width: 100%, inset: 1em, radius: 4pt)[
+    #par[
+      #if title == none [
+        #text(fill: color)[*#name. *]
+      ] else [
+        #text(fill: color)[*#name (#title). *]
       ]
-    ]
-  } else {
-    block(stroke: 0.5pt + color, width: 100%, inset: 1em, radius: 4pt)[
-      #par[
-        #if title == none [
-          #text(fill: color)[*#name. *]
-        ] else [
-          #text(fill: color)[*#name (#title). *]
-        ]
-      ] #body
-    ]
-  }
+    ] #body
+  ]
 ]
 
 #let note-box(body) = [
@@ -148,48 +27,24 @@ figure[role='math'] {
 ]
 
 #let definition(title: none, body) = [
-  #thm-box(green.darken(25%), "Определение", title, body, "definition")
+  #thm-box(green.darken(25%), "Определение", title, body)
 ]
 
 #let theorem(title: none, body) = [
-  #thm-box(red.darken(25%), "Теорема", title, body, "theorem")
+  #thm-box(red.darken(25%), "Теорема", title, body)
 ]
 
 #let property(title: none, body) = [
-  #thm-box(blue.darken(25%), "Свойство", title, body, "property")
+  #thm-box(blue.darken(25%), "Свойство", title, body)
 ]
 
 #let proof(body) = context [
-  #if target() == "html" [
-    #html.details[
-      #html.summary[Доказательство.]
-      #body
-
-      $square$
-    ]
-  ] else [
-    *Доказательство.* #body #h(1fr) $square$
-  ]
+  *Доказательство.* #body #h(1fr) $square$
 ]
 
 #let example(body) = context [
-  #if target() == "html" [
-    #html.details[
-      #html.summary[Пример.]
-      #body
-    ]
-  ] else [
-    *Пример.* #body
-  ]
+  *Пример.* #body
 ]
-
-#let render(body) = context {
-  if target() == "html" {
-    html.frame(body)
-  } else {
-    body
-  }
-}
 
 #let template(doc-title, body) = context {
   set document(title: doc-title)
@@ -198,13 +53,10 @@ figure[role='math'] {
   set heading(numbering: "1.1.")
 
   show link: set text(fill: blue)
+  show ref: set text(fill: blue)
 
   show math.equation.where(block: true): it => {
-    if target() == "html" {
-      html.elem("figure", attrs: (role: "math"), html.frame(it))
-    } else {
-      block(width: 100%, inset: 0pt, align(center, it))
-    }
+    block(width: 100%, inset: 0pt, align(center, it))
   }
 
   show raw.where(block: true): (it) => {
@@ -225,32 +77,17 @@ figure[role='math'] {
     it
   )
 
-  if target() == "html" {
-    show math.equation.where(block: false): (it) => {
-      box(html.frame(it))
-    }
+  title()
+  outline()
 
-    html.head([
-      #html.style(css-stylesheet)
-    ])
+  place(bottom + center, float: true, dy: 2cm)[
+    #link("https://itmo.arslee.me")[itmo.arslee.me]
+    #image("assets/icon.png", height: 12%)
+  ]
+  pagebreak()
 
-    title()
-    outline()
+  set page(numbering: "1")
+  counter(page).update(1)
 
-    body
-  } else {
-    title()
-    outline()
-
-    place(bottom + center, float: true, dy: 2cm)[
-      #link("https://itmo.arslee.me")[itmo.arslee.me]
-      #image("assets/icon.png", height: 12%)
-    ]
-    pagebreak()
-
-    set page(numbering: "1")
-    counter(page).update(1)
-
-    body
-  }
+  body
 }
