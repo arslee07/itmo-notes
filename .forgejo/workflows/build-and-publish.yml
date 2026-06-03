@@ -29,22 +29,7 @@ jobs:
 
             out="build/"$(echo $in | sed -e "s/\.\///" -e "s/\//-/" -e "s/\.typ/\.pdf/")
             echo Compiling $in to $out...
-            typst compile $in $out --root=. --features=html
-          done
-
-      - name: Build HTMLs
-        run: |
-          mkdir -p build
-          for in in $(find -name "*.typ")
-          do
-            if [ $in = "template.typ" ]
-            then
-              continue
-            fi
-
-            out="build/"$(echo $in | sed -e "s/\.\///" -e "s/\//-/" -e "s/\.typ/\.html/")
-            echo Compiling $in to $out...
-            typst compile $in $out --root=. --features=html --format=html
+            typst compile $in $out --root=.
           done
 
       - name: Install Pandoc
