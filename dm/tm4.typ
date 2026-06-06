@@ -823,7 +823,7 @@ $
       k >= 0,
     )
     quad==>quad
-    T(n) in Theta(n^c_"crit" log^(k + 1) n)
+    T(n) in Theta(n^(c_"crit") log^(k + 1) n)
   $
 
 + "Мердж медленнее рекурсии":
@@ -870,7 +870,7 @@ $
 При $n -> oo$:
 
 $
-  n! ~ sqrt(2 pi n))(n/e)^n
+  n! ~ sqrt(2 pi n)(n/e)^n
 $
 
 Если быть более точным:
