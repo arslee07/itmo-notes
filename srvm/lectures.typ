@@ -908,7 +908,7 @@ $
   $
     Im loA = { y in W | exists x in V : loA(x) = y }
   $
-] space
+]
 
 #theorem[
   Для любого линейного оператора $loA : V -> W$:
